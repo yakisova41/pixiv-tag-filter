@@ -1,0 +1,29 @@
+{
+  "name": "userscript-esbuild-ts",
+  "module": "dist/index.user.js",
+  "type": "commonjs",
+  "devDependencies": {
+    "bun-types": "^0.1.0",
+    "esbuild": "^0.15.10",
+    "express": "^4.18.1"
+  },
+  "scripts": {
+    "build": "node ./build/esbuild.js build minify",
+    "build:notminify":"node ./build/esbuild.js build",
+    "watch":"node ./build/esbuild.js watch",
+    "watch:minify":"node ./build/esbuild.js watch minify",
+    "dev": "node ./build/esbuild.js watch & node ./build/server.js",
+    "dev:minify":"node ./build/esbuild.js watch minify& node ./build/server.js"
+  },
+  "userScript": {
+    "@name": "userscript-esbuild-ts",
+    "@version": "0.0.1",
+    "@author": "yakisova41",
+    "@description": "yeah",
+    "@match": "*",
+    "devServer": {
+      "port":8000,
+      "host":"localhost"
+    }
+  }
+}
