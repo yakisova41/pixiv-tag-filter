@@ -37,7 +37,7 @@ export default options => ({
                 `);
             }
 
-            scripts.push(`import("http://${host}:${port}/index")`);
+            scripts.push(`import("http://${host}:${port}/script")`);
 
             fs.writeFileSync(outFile, scripts.join('\n'))
         })
