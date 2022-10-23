@@ -6,7 +6,7 @@
     "bun-types": "^0.1.0"
   },
   "scripts": {
-    "dev":"bun run build dev watch & bun run hotserver & bun run server dev",
+    "dev":"npm run build dev watch & npm run hotserver & npm run server dev",
     "hotserver":"node build/hotReloadserver.js",
     "build":"node build/esbuild.mjs",
     "server":"node build/server.mjs"
