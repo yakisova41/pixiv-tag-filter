@@ -11,12 +11,35 @@ export default options => ({
             const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname(import.meta.url), '/../package.json')))
             let host;
             let port;
+            let sockport;
+            let hot
             packageJson.userScript.devServer?.host? host = packageJson.userScript.devServer.host : host = '127.0.0.1'
             packageJson.userScript.devServer?.port? port = packageJson.userScript.devServer.port : port = 8080
-            
-            const hotReloadScript = `import("http://${host}:${port}/index")`;
+            packageJson.userScript.devServer?.websocket? sockport = packageJson.userScript.devServer.websocket : sockport = 5001
+            packageJson.userScript.devServer?.hot? hot = true: hot = false
 
-            fs.writeFileSync(outFile, buildResult +  hotReloadScript)
+            let scripts = []
+            
+            if(hot){
+                scripts.push(`(()=>{
+    const webSocket = new WebSocket("ws://${host}:${sockport}");
+    webSocket.onmessage = (event)=>{
+    switch(event.data){
+        case "reload":
+            console.log('[hotReload] reload...')
+            window.location.reload();
+            break;
+        case "connect":
+            console.log('[hotReload] connecting ok')
+            break;
+    }
+}})()
+                `);
+            }
+
+            scripts.push(`import("http://${host}:${port}/index")`);
+
+            fs.writeFileSync(outFile, scripts.join('\n'))
         })
     }
 })

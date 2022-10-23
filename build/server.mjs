@@ -15,7 +15,7 @@ packageJson.userScript.devServer?.port? port = packageJson.userScript.devServer.
 app.get('/',(req, res)=>{
     res.header("Access-Control-Allow-Origin", "*");
     if(getArg('dev')){
-        res.sendFile(path.join(__dirname(import.meta.url), '/../dist/', 'dev.user.js'))
+        res.sendFile(path.join(__dirname(import.meta.url), '/', 'dev.user.js'))
     }
     else{
         res.sendFile(path.join(__dirname(import.meta.url), '/../dist/', 'index.user.js'))
@@ -29,7 +29,12 @@ app.get('/index',(req, res)=>{
 
 try{
     app.listen(port, host, ()=>{
-        console.log(`userscript url:http://${host}:${port}`)
+        let realscript = ''
+        if(getArg('dev')){
+            realscript = `\n Real script url: http://${host}:${port}/index`
+        }
+
+        console.log(`\x1b[43m\n\n\x1b[1m Userscript url: http://${host}:${port}${realscript}\n\x1b[49m`,)
     })
 }
 catch(err){
