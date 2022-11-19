@@ -1,6 +1,5 @@
 {
   "name": "userscript-esbuild-ts",
-  "module": "dist/index.user.js",
   "type": "commonjs",
   "devDependencies": {
     "bun-types": "^0.1.0",
@@ -12,13 +11,13 @@
     "ws": "^8.9.0"
   },
   "dependencies": {
+    "fs": "^0.0.1-security"
   },
   "scripts": {
-    "dev":"npm run build dev watch & npm run hotserver & npm run server dev",
-    "hotserver":"node build/hotReloadserver.js",
-    "build":"node build/esbuild.mjs",
-    "server":"node build/server.mjs"
-
+    "hotreload-server":"node build/sockserver.js",
+    "build":"node build/",
+    "server":"node build/server.js",
+    "dev":"npm run build mode=dev & npm run hotreload-server & npm run server"
   },
   "userScript": {
     "@name": "userscript-esbuild-ts",
@@ -29,8 +28,11 @@
     "devServer": {
       "port": 8001,
       "host": "localhost",
-      "websocket":5001,
-      "hot":true
+      "websocket": 5000,
+      "hot": true
+    },
+    "esbuild":{
+      "entryPoints":["src/index.ts"]
     }
   }
 }

@@ -22,10 +22,12 @@ if(hot){
         ws.send('connect')
     })
 
-    const watcher = chokidar.watch(path.join(__dirname, '/../dist/'))
+    const watcher = chokidar.watch(path.join(__dirname, 'tmp/'))
     watcher.on('ready',()=>{
-        watcher.on('change', ()=>{
+        watcher.on('change', (e)=>{
             wserver.clients.forEach(client => {
+                console.log('Reloading...')
+
                 client.send('reload')  
             })
         })    

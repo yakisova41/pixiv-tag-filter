@@ -1,14 +1,13 @@
-import path from 'path'
-import fs from 'fs'
-import { __dirname } from './module/dirname.mjs'
-
-export default options => ({
+module.exports = options => ({
     name:'writeUserscriptHeader',
     setup(build){
+        const fs = require('fs')
+        const path = require('path')
+
         build.onEnd(()=>{
             const outFile = build.initialOptions.outfile
             const buildResult = fs.readFileSync(outFile)
-            const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname(import.meta.url), '/../package.json')))
+            const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, '/../package.json')))
             
             let userscriptHeaders = []
 

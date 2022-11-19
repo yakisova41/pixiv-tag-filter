@@ -2,7 +2,7 @@
   "compilerOptions": {
     "lib": ["ESNext", "dom", "dom.iterable"],
     "module": "commonjs",
-    "target": "ES6",
+    "target": "ESNext",
     "moduleResolution": "node",
     "allowJs": true,
     "esModuleInterop":true

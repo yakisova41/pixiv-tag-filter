@@ -1,1 +1,1 @@
-console.log("I can write userscript in typescript!");
+console.log('hello world')
