@@ -9,7 +9,6 @@
     "websocket": "^1.0.34"
   },
   "dependencies": {
-    "fs": "^0.0.1-security"
   },
   "scripts": {
     "hotreload-server":"node build/sockserver.js",
