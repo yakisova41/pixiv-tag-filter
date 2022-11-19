@@ -12,7 +12,7 @@
   },
   "scripts": {
     "hotreload-server":"node build/sockserver.js",
-    "build":"node build/",
+    "build":"node build/ mode=build",
     "server":"node build/server.js",
     "dev":"npm run build mode=dev & npm run hotreload-server & npm run server"
   },
