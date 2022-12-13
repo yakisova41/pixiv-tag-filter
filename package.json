@@ -1,35 +1,49 @@
 {
-  "name": "userscript-esbuild-ts",
+  "name": "pixiv-tag-filter",
   "type": "commonjs",
+  "version": "0.0.1",
   "devDependencies": {
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
     "bun-types": "^0.1.0",
     "chokidar": "3.5.3",
     "esbuild": "^0.15.12",
+    "esbuild-ssr-css-modules-plugin": "^0.1.2",
     "express": "^4.18.2",
-    "ws":"^8.11.0"
+    "typescript-plugin-css-modules": "^4.1.1",
+    "ws": "^8.11.0"
   },
   "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "scripts": {
-    "hotreload-server":"node build/sockserver.js",
-    "build":"node build/ mode=build",
-    "server":"node build/server.js",
-    "dev":"npm run build mode=dev & npm run hotreload-server & npm run server"
+    "hotreload-server": "node build/sockserver.js",
+    "build": "node build/ mode=build",
+    "server": "node build/server.js",
+    "dev": "npm run build mode=dev & npm run hotreload-server & npm run server"
   },
   "userScript": {
-    "@name": "userscript-esbuild-ts",
+    "@name": "Pixiv Automatic exclusion search",
+    "@name:zh-CN": "Pixiv 自动排除搜索",
+    "@name:ja": "Pixiv 自動で除外検索",
     "@version": "0.0.1",
     "@author": "yakisova41",
-    "@description": "yeah",
-    "@match": "https://www.google.com/",
+    "@namespace":"https://yakisova.com/",
+    "@description": "When you do a pixiv search, it automatically does an exclusion search.",
+    "@description:ja":"pixiv検索をした時に、自動的に除外検索をします。",
+    "@description:zh-CN":"当你进行pixiv搜索时，它会自动进行排除性搜索。",
+    "@match": "https://www.pixiv.net/*",
     "devServer": {
       "port": 8001,
       "host": "localhost",
       "websocket": 5000,
       "hot": true
     },
-    "esbuild":{
-      "entryPoints":["src/index.ts"]
+    "esbuild": {
+      "entryPoints": [
+        "src/index.ts"
+      ]
     }
   }
 }

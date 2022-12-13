@@ -1,14 +1,19 @@
-module.exports = (mode)=>{
-    const esbuild = require('esbuild');
-    const fs = require('fs');
-    const path = require('path');
-    const writeUserscriptHeader = require('./writeUserscriptHeader.js')
-    const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, '/../package.json')));
+const esbuild = require('esbuild');
+const fs = require('fs');
+const path = require('path');
+const writeUserscriptHeader = require('./writeUserscriptHeader.js')
+const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, '/../package.json')));
+const cssModulesPlugin = require('esbuild-ssr-css-modules-plugin').default;
 
+module.exports = (mode)=>{
     /**
      * dev and production common plugins
      */
-    const plugins = [];
+    const plugins = [
+        cssModulesPlugin({    
+            jsCSSInject: true
+        }),
+    ];
 
     switch(mode){
         case 'build':

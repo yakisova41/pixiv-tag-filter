@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "lib":["DOM"],
+        "lib":["DOM","ES2015"],
         "resolveJsonModule":true,
         "esModuleInterop":true
     }

@@ -1,0 +1,14 @@
+.pixivFilterControllerRoot{
+    width:300px;
+    height:100vh;
+    position:fixed;
+    bottom:0;
+    top:0px;
+    right:-250px;
+    transition: 0.2s;
+}
+
+.pixivFilterControllerRoot:hover{
+    right:0;
+    transition: 0.2s;
+}

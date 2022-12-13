@@ -1,0 +1,30 @@
+{
+    "Search only works bookmarked ilust by many users":{
+        "ja":"Users入り作品のみを表示する",
+        "zh":"只搜索被许多用户加入书签的作品"
+    },
+    "over 100users":{
+        "ja":"100users以上",
+        "zh":"超过100名用户"
+    },
+    "over 1000users":{
+        "ja":"1000users以上",
+        "zh":"超过1000名用户"
+    },
+    "over 10000users":{
+        "ja":"10000users以上",
+        "zh":"超过10000名用户"
+    },
+    "List of tags to exclude":{
+        "ja":"除外するタグ一覧",
+        "zh":"要排除的标签列表"
+    },
+    "Enter the tags name you want to exclude":{
+        "ja":"Enterで除外するタグ名を追加",
+        "zh":"输入你想排除的标签名称"
+    },
+    "Remove":{
+        "ja":"削除",
+        "zh":"移除"
+    }
+}
