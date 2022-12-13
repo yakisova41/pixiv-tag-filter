@@ -28,6 +28,7 @@
     "@name:zh-CN": "Pixiv 自动排除搜索",
     "@name:ja": "Pixiv 自動で除外検索",
     "@version": "0.0.1",
+    "@license":"MIT",
     "@author": "yakisova41",
     "@namespace":"https://yakisova.com/",
     "@description": "When you do a pixiv search, it automatically does an exclusion search.",
