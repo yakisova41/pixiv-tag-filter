@@ -3,6 +3,7 @@ import styles from '../styles/controller.css';
 import packagejson from '../../package.json';
 import language from '../language.json';
 import {Setting} from './Setting';
+import setLocalstorage from '../setLocalstorage';
 
 export default ()=>{
     const [darkmode, setDarkmode] = useState(true);
@@ -17,7 +18,7 @@ export default ()=>{
         if (e.key === 'Enter'){
             if(e.currentTarget.value !== ''){
                 const list : string[] = [...blocklist, e.currentTarget.value];
-                localStorage.setItem('pixiv-filter-blocklist', list.join(','))
+                setLocalstorage('pixiv-filter-blocklist', list.join(','))
                 setBlocklist(list)
 
                 e.currentTarget.value = '';                
@@ -28,7 +29,7 @@ export default ()=>{
     const tagremove = (key : number)=>{
         blocklist.splice(key, 1);
         const list = [...blocklist];
-        localStorage.setItem('pixiv-filter-blocklist', list.join(','))
+        setLocalstorage('pixiv-filter-blocklist', list.join(','))
         setBlocklist([...blocklist]);
     }
     
@@ -45,7 +46,7 @@ export default ()=>{
     /**
      * switch darkmode
      */
-    window.addEventListener('pixiv-domchange', ()=>{
+    document.addEventListener('pixiv-domchange', ()=>{
         const body  = document.querySelector('body');
         const color = window.getComputedStyle(body, '').color;
 
@@ -67,12 +68,28 @@ export default ()=>{
         usersonlymode = localStorage.getItem('pixiv-filter-usersonly')
     }
     else{
-        localStorage.setItem('pixiv-filter-usersonly', '0')
+        setLocalstorage('pixiv-filter-usersonly', '0')
     }    
 
     const handleChangeUsers = (e : React.ChangeEvent<HTMLSelectElement>)=>{
-        localStorage.setItem('pixiv-filter-usersonly', e.target.value)
+        setLocalstorage('pixiv-filter-usersonly', e.target.value)
     };
+
+    /**
+     * switch exclude ai mode
+     */
+    let excludeAImode = '0';
+
+    if(localStorage.getItem('pixiv-filter-excludeAImode') !== null){
+        excludeAImode = localStorage.getItem('pixiv-filter-excludeAImode')
+    }
+    else{
+        setLocalstorage('pixiv-filter-excludeAImode', '0')
+    }    
+
+    const handleChangeExcludeAI = (e : React.ChangeEvent<HTMLSelectElement>)=>{
+        setLocalstorage('pixiv-filter-excludeAImode', e.target.value)
+    }
 
 
     /**
@@ -80,7 +97,7 @@ export default ()=>{
      */
     const translate = (text : string)=>{
         const lang = navigator.language;
-
+        
         if(language[text] && language[text][lang]){
             return language[text][lang];
         }
@@ -108,6 +125,13 @@ export default ()=>{
                         <option value="1">{translate("over 100users")}</option>
                         <option value="2">{translate("over 1000users")}</option>
                         <option value="3">{translate("over 10000users")}</option>
+                    </select>
+                </Setting>
+
+                <Setting text={translate('Exclude AI works')}>
+                    <select onChange={handleChangeExcludeAI} defaultValue={excludeAImode}>
+                        <option value="0">OFF</option>
+                        <option value="1">ON</option>
                     </select>
                 </Setting>
             </ul>

@@ -7,6 +7,7 @@
     --controllerInputBgLight:#F5F5F5;
     --controllerBorderLight:#c4c4c4;
     --controllerBorderDark:#424242;
+    --font:'Noto Sans JP', 'Noto Sans SC', sans-serif;
 }
 
 .controllerContainer{
@@ -29,14 +30,14 @@
 
 .controllerContainer > .toptitle{
     margin:0;
-    font-family: noto-sans-cjk-jp, sans-serif;
+    font-family: var(--font);
     font-weight: 600!important;
     font-size: 24px!important;
     margin:10px 0;
 }
 
 .controllerContainer > .version{
-    font-family: noto-sans-cjk-jp, sans-serif;
+    font-family: var(--font);
     font-weight: 300!important;
     font-size: 12px!important;
 }
@@ -67,7 +68,7 @@
 }
 
 .blocklistOuter > h2.blocklistTitle{
-    font-family: noto-sans-cjk-jp, sans-serif;
+    font-family: var(--font);
     font-weight: 400!important;
     font-size: 20px!important;
     margin: 10px 0;
@@ -100,7 +101,7 @@ li.blocktag{
     width:80%;
     left:5%;
     position: relative;
-    font-family: noto-sans-cjk-jp, sans-serif;
+    font-family: var(--font);
     font-weight: 300!important;
     font-size: 13px!important;
 }
@@ -133,7 +134,7 @@ li.blocktag{
     color: var(--controllerColorDark);
     border:none;
     cursor:pointer;
-    font-family: noto-sans-cjk-jp, sans-serif;
+    font-family: var(--font);
     font-weight: 300!important;
     font-size: 13px!important;
 }
