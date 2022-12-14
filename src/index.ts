@@ -42,16 +42,17 @@ setInterval(()=>{
 });
 
 /**
- * routing
+ * ページ変更イベント```pixiv-pagechange```があった際、```location.pathname```に適切な関数を実行
  */
 const pageChangeHandler = (e : CustomEvent)=>{
     const pathnameSplit = e.detail.new.split('/');
-    console.log('a')
+
     switch(pathnameSplit[1]){
         case 'artworks':
             //イラストページ
             
             break;
+
         case 'tags':
             //検索画面
             setTimeout(()=>{
@@ -63,9 +64,11 @@ const pageChangeHandler = (e : CustomEvent)=>{
             });
             
             break;
+
         case '':
             //トップページ
             break;
+
         case 'cate_r18.php':
             //r18トップページ
             break;
@@ -76,6 +79,10 @@ const pageChangeHandler = (e : CustomEvent)=>{
 }
 document.addEventListener('pixiv-pagechange', pageChangeHandler as EventListenerOrEventListenerObject);
 
+/**
+ * onload
+ * コントローラーを描画
+ */
 window.onload = ()=>{
     createController();
 }

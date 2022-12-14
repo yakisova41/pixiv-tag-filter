@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import styles from '../styles/controller.css';
 import packagejson from '../../package.json';
-import language from '../language.json';
+import { translate } from '../translate';
 import {Setting} from './Setting';
 import setLocalstorage from '../setLocalstorage';
 
@@ -10,7 +10,7 @@ export default ()=>{
     const [blocklist, setBlocklist] = useState([]);
   
     /**
-     * block tags 
+     * タグリスト
      */
     let tagskey = 0;
 
@@ -44,7 +44,7 @@ export default ()=>{
 
 
     /**
-     * switch darkmode
+     * sダークモード
      */
     document.addEventListener('pixiv-domchange', ()=>{
         const body  = document.querySelector('body');
@@ -60,7 +60,7 @@ export default ()=>{
 
 
     /**
-     * switch usersonlymode
+     * users検索の切り替え
      */
     let usersonlymode = '0';
 
@@ -75,8 +75,9 @@ export default ()=>{
         setLocalstorage('pixiv-filter-usersonly', e.target.value)
     };
 
+
     /**
-     * switch exclude ai mode
+     * AI除外の切り替え
      */
     let excludeAImode = '0';
 
@@ -90,22 +91,7 @@ export default ()=>{
     const handleChangeExcludeAI = (e : React.ChangeEvent<HTMLSelectElement>)=>{
         setLocalstorage('pixiv-filter-excludeAImode', e.target.value)
     }
-
-
-    /**
-     * translate
-     */
-    const translate = (text : string)=>{
-        const lang = navigator.language;
-        
-        if(language[text] && language[text][lang]){
-            return language[text][lang];
-        }
-        else{
-            return text;
-        }
-    }
-
+    
 
     return (
         <div 
@@ -122,9 +108,16 @@ export default ()=>{
                 <Setting text={translate('Search only works bookmarked ilust by many users')}>
                     <select onChange={handleChangeUsers} defaultValue={usersonlymode}>
                         <option value="0">OFF</option>
-                        <option value="1">{translate("over 100users")}</option>
-                        <option value="2">{translate("over 1000users")}</option>
-                        <option value="3">{translate("over 10000users")}</option>
+                        <option value="50">50users</option>
+                        <option value="100">100users</option>
+                        <option value="300">300users</option>
+                        <option value="500">500users</option>
+                        <option value="1000">1000users</option>
+                        <option value="5000">5000users</option>
+                        <option value="10000">10000users</option>
+                        <option value="20000">20000users</option>
+                        <option value="30000">30000users</option>
+                        <option value="00">100~users</option>
                     </select>
                 </Setting>
 

@@ -1,15 +1,16 @@
-# userscript-esbuild-ts
+# Pixiv-tag-filter
+pixivの検索にタグ除外機能を追加するuserscriptです。
+## 機能
+- 特定タグを除外
+- AIイラストの除外
+- users入りに自動絞り込み
 
-To install dependencies:
+## 注意
+あまりに検索結果が少ないとソートが機能しないかも
 
-```bash
-bun install
+## ビルド
+自動でuserscriptをビルドします。
+```sh
+npm install
+npm run build
 ```
-
-To run:
-
-```build
-bun run build
-```
-
-This project was created using `bun init` in bun v0.1.13. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
