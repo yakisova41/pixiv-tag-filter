@@ -54,7 +54,6 @@ const sortingData = async (searchKeyword : string)=>{
     if(usersonlymode !== null && usersonlymode !== '0'){
         users = '%20'+ usersonlymode
     }
-    console.log('a')
 
     /**
      * AI除外
@@ -65,7 +64,12 @@ const sortingData = async (searchKeyword : string)=>{
     }
     
 
-    const blocklist = localStorage.getItem('pixiv-filter-blocklist').split(',');
+    let blocklist = [];
+    const blocklistString = localStorage.getItem('pixiv-filter-blocklist')
+    if(blocklistString !== null){
+        blocklist = blocklistString.split(',');
+    }
+
     let sortcount = 0;
 
     const searchResponse = await search(searchKeyword + users, pageNumber, mode);
