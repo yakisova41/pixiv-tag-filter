@@ -1,22 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Controller from './components/Controller';
-import styles from './styles/global.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Controller from "./components/Controller";
+import styles from "./styles/global.css";
 
 /**
  * bodyにreactのrootを追加し、コントローラーを描画します。
  */
-export default ()=>{
-    const body = document.querySelector("body");
+export default () => {
+  const body = document.querySelector("body");
 
-    const controllerRoot = document.createElement('div');
-    controllerRoot.className = styles.pixivFilterControllerRoot;
-    body.appendChild(controllerRoot);
+  const controllerRoot = document.createElement("div");
+  controllerRoot.className = styles.pixivFilterControllerRoot;
+  body.appendChild(controllerRoot);
 
-    ReactDOM.createRoot(controllerRoot)
-    .render(
-        <React.StrictMode>
-            <Controller/>
-        </React.StrictMode>
-    );
-}
+  ReactDOM.createRoot(controllerRoot).render(
+    <React.StrictMode>
+      <Controller />
+    </React.StrictMode>
+  );
+};

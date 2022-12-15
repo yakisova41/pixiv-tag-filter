@@ -1,17 +1,17 @@
 /*notosans jp and simplified Chinese*/
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Noto+Sans+SC:wght@100;300;400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Noto+Sans+SC:wght@100;300;400;500;700;900&display=swap");
 
-.pixivFilterControllerRoot{
-    width:300px;
-    height:100vh;
-    position:fixed;
-    bottom:0;
-    top:0px;
-    right:-250px;
-    transition: 0.2s;
+.pixivFilterControllerRoot {
+  width: 300px;
+  height: 100vh;
+  position: fixed;
+  bottom: 0;
+  top: 0px;
+  right: -250px;
+  transition: 0.2s;
 }
 
-.pixivFilterControllerRoot:hover{
-    right:0;
-    transition: 0.2s;
+.pixivFilterControllerRoot:hover {
+  right: 0;
+  transition: 0.2s;
 }
