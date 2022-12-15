@@ -40,9 +40,9 @@
     "@license": "MIT",
     "@author": "yakisova41",
     "@namespace": "https://yakisova.com/",
-    "@description": "When you do a pixiv search, it automatically does an exclusion search.",
-    "@description:ja": "pixiv検索をした時に、自動的に除外検索をします。",
-    "@description:zh-CN": "当你进行pixiv搜索时，它会自动进行排除性搜索。",
+    "@description": "Pixiv Automatically exclude specific tags, auto filter with \"users\"",
+    "@description:ja": "Pixiv 特定タグを自動除外 users入りのみに自動絞り込みする機能を追加します。",
+    "@description:zh-CN": "Pixiv 自动排除特定标签，自动过滤与 \"users\"。",
     "@match": "https://www.pixiv.net/*",
     "devServer": {
       "port": 8001,
@@ -54,7 +54,7 @@
       "entryPoints": [
         "src/index.ts"
       ],
-      "minify": true
+      "minify": false
     }
   }
 }
