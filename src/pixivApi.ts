@@ -28,6 +28,7 @@ export const search = (
 
 /**
  * csrftokenを取得します
+ * @returns csrftoken
  */
 export const getCsrf = (): Promise<string> => {
     return new Promise((resolve) => {
@@ -43,6 +44,7 @@ export const getCsrf = (): Promise<string> => {
 
 /**
  * 自分のuseridを取得します
+ * @returns 自分のuserid
  */
 export const getMyUserId = (): string => {
     const cookie = document.cookie;
@@ -65,7 +67,7 @@ export const getMyUserId = (): string => {
 /**
  * ブックマーク一覧を100づつ取得します
  * @param offset offset 0 ~
- * @returns
+ * @returns ブックマーク一覧
  */
 export const getBookmark = (offset: number): Promise<pixivResponse> => {
     return new Promise((resolve) => {
@@ -89,7 +91,7 @@ export const getBookmark = (offset: number): Promise<pixivResponse> => {
 /**
  * イラストのidからブックマークidを取得します
  * @param illustId イラストid
- * @returns
+ * @returns ブックマークid
  */
 export const getBookmarkId = async (illustId: string) => {
     let i = 0;
@@ -113,6 +115,47 @@ export const getBookmarkId = async (illustId: string) => {
     }
 
     return id;
+};
+
+/**
+ * ブックマークを追加
+ * @param illust_id イラストid
+ * @param csrfToken csrftoken
+ */
+export const bookmark_add = async (illust_id: string, csrfToken: string) => {
+    await fetch("https://www.pixiv.net/ajax/illusts/bookmarks/add", {
+        method: "POST",
+        body: JSON.stringify({
+            comment: "",
+            illust_id: illust_id,
+            restrict: 0,
+            tags: [],
+        }),
+        headers: {
+            accept: "application/json",
+            "content-type": "application/json; charset=utf-8",
+            "x-csrf-token": csrfToken,
+        },
+    });
+};
+
+/**
+ * ブックマークを解除
+ * @param illust_id イラストid
+ * @param csrfToken csrftoken
+ */
+export const bookmark_remove = async (illust_id: string, csrfToken: string) => {
+    const id = await getBookmarkId(illust_id);
+
+    await fetch("https://www.pixiv.net/ajax/illusts/bookmarks/delete", {
+        method: "POST",
+        body: `bookmark_id=${id}`,
+        headers: {
+            accept: "application/json",
+            "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+            "x-csrf-token": csrfToken,
+        },
+    });
 };
 
 export interface illust {
