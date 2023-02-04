@@ -1,6 +1,11 @@
 export type PageChangeEvent = string;
 export type SearchChangeEvent = string;
 
+/**
+ * DOMの変更をobserveし、
+ * location.pathnameの変更時にpixiv-tag-filter-pageChangeイベントを、
+ * location.searchの変更時にpixiv-tag-filter-searchChangeイベントを発火します。
+ */
 const pageChangeObserver = (): void => {
     let pathNameTmp = "";
     let searchTmp = "";

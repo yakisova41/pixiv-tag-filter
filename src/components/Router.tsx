@@ -1,5 +1,9 @@
 import React, { createContext, FC } from "react";
 
+/**
+ * 元サイトのreact-routerのpropsを返します
+ * @returns react-routerのprops
+ */
 export const useRouter = (): Router => {
     const elem = document.querySelector("#root");
     let router;
@@ -14,14 +18,6 @@ export const useRouter = (): Router => {
     });
 
     return router;
-};
-
-export type Router = {
-    push: (path: string) => void;
-};
-
-export type LinkProps = JSX.IntrinsicElements["a"] & {
-    className?: string;
 };
 
 export const RouterContext = createContext<Router | null>(null);
@@ -52,4 +48,12 @@ export const Link: FC<LinkProps> = (props) => {
             )}
         </RouterContext.Consumer>
     );
+};
+
+export type Router = {
+    push: (path: string) => void;
+};
+
+export type LinkProps = JSX.IntrinsicElements["a"] & {
+    className?: string;
 };
