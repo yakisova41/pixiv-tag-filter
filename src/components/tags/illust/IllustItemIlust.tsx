@@ -2,31 +2,34 @@ import React from "react";
 import style from "../tags.css";
 import IllustItemLike from "./IllustItemLike";
 import { Link } from "../../Router";
+import { IllustContext } from "../IllustContext";
 
-const illustItemillust = ({
-    imgsrc,
-    imgLiked,
-    illustLink,
-}: {
-    imgsrc: string;
-    imgLiked: boolean;
-    illustLink: string;
-}) => {
+const illustItemillust = ({}: {}) => {
     return (
-        <div className={style.illust_item_illust}>
-            <div className={style.illust_item_illust_inner}>
-                <Link className={style.illust_item_link} href={illustLink}>
-                    <div className={style.illust_item_illust_img_outer}>
-                        <img
-                            className={style.illust_item_illust_img}
-                            src={imgsrc}
+        <IllustContext.Consumer>
+            {(illust) => (
+                <div className={style.illust_item_illust}>
+                    <div className={style.illust_item_illust_inner}>
+                        <Link
+                            className={style.illust_item_link}
+                            href={"/artworks/" + illust.id}
+                        >
+                            <div className={style.illust_item_illust_img_outer}>
+                                <img
+                                    className={style.illust_item_illust_img}
+                                    src={illust.url}
+                                />
+                            </div>
+                        </Link>
+
+                        <IllustItemLike
+                            liked={illust.bookmarkData !== null}
+                            illustId={illust.id}
                         />
                     </div>
-                </Link>
-
-                <IllustItemLike liked={imgLiked} />
-            </div>
-        </div>
+                </div>
+            )}
+        </IllustContext.Consumer>
     );
 };
 

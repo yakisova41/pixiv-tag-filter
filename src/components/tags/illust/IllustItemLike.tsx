@@ -1,15 +1,26 @@
 import React from "react";
 import style from "../tags.css";
 import { useState } from "react";
+import { getCsrf, bookmark_add, bookmark_remove } from "../../../pixivApi";
 
-const IllustItemLike = ({ liked }: { liked: boolean }) => {
+const IllustItemLike = ({
+    liked,
+    illustId,
+}: {
+    liked: boolean;
+    illustId: string;
+}) => {
     const [islike, setIslike] = useState(liked);
 
-    const handleClick = () => {
+    const handleClick = async () => {
+        const csrf = await getCsrf();
+
         if (islike) {
             setIslike(false);
+            bookmark_remove(illustId, csrf);
         } else {
             setIslike(true);
+            bookmark_add(illustId, csrf);
         }
     };
 

@@ -1,20 +1,22 @@
 import React from "react";
 import style from "./tags.css";
 import { Link } from "../Router";
+import { IllustContext } from "./IllustContext";
 
-const IllustTitle = ({
-    text,
-    illustLink,
-}: {
-    text: string;
-    illustLink: string;
-}) => {
+const IllustTitle = ({}: {}) => {
     return (
-        <div className={style.illust_about}>
-            <Link href={illustLink} className={style.illust_title_link}>
-                {text}
-            </Link>
-        </div>
+        <IllustContext.Consumer>
+            {(illust) => (
+                <div className={style.illust_about}>
+                    <Link
+                        href={"/artworks/" + illust.id}
+                        className={style.illust_title_link}
+                    >
+                        {illust.title}
+                    </Link>
+                </div>
+            )}
+        </IllustContext.Consumer>
     );
 };
 
