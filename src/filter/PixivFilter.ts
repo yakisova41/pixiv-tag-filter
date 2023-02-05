@@ -1,4 +1,3 @@
-import { Console } from "console";
 import { illust } from "../pixivApi";
 
 export class PixivFilter {
