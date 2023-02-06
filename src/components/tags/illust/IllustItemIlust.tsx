@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "../tags.css";
 import IllustItemLike from "./IllustItemLike";
+import Sensitive from "./Sensitive";
 import { Link } from "../../Router";
 import { IllustContext } from "../IllustContext";
 
 const illustItemillust = ({}: {}) => {
+    const r18type = (tags: string[]) => {
+        if (tags[0] === "R-18") {
+            return "R-18";
+        } else if (tags[0] === "R-18G") {
+            return "R-18G";
+        } else {
+            return false;
+        }
+    };
+
     return (
         <IllustContext.Consumer>
             {(illust) => (
@@ -20,6 +31,8 @@ const illustItemillust = ({}: {}) => {
                                     src={illust.url}
                                 />
                             </div>
+
+                            <Sensitive value={r18type(illust.tags)} />
                         </Link>
 
                         <IllustItemLike
