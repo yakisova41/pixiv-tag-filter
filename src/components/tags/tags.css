@@ -148,6 +148,78 @@
     overflow: hidden;
 }
 
+.not_found_container {
+    display: flex;
+    flex-flow: column;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 408px;
+    width: 100%;
+}
+
+.not_found_text {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 28px;
+    color: rgb(92, 92, 92);
+}
+
+.not_found_text_mini {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 28px;
+    color: rgb(92, 92, 92);
+}
+
+.not_found_icon {
+    margin-bottom: 12px;
+}
+
+.not_found_icon_svg {
+    stroke: none;
+    fill: rgb(92, 92, 92);
+    width: 72px;
+    height: 72px;
+    line-height: 0;
+    font-size: 0px;
+    vertical-align: middle;
+}
+
+.sensitive_container {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    padding: 4px 4px 0px;
+    pointer-events: none;
+}
+
+.sensitive {
+    display: flex;
+    align-items: flex-start;
+    flex-flow: row wrap;
+}
+
+.sensitive_inner {
+    margin-right: 2px;
+}
+
+.sensitive_content {
+    padding: 0px 6px;
+    border-radius: 3px;
+    color: rgb(245, 245, 245);
+    background: rgb(255, 64, 96);
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 16px;
+    user-select: none;
+}
+
 @supports (display: grid) {
     .tags_container_ul {
         display: grid;
