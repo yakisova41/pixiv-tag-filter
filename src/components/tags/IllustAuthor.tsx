@@ -20,9 +20,12 @@ const IllustAuthor = ({}: {}) => {
                         </Link>
                     </div>
 
-                    <a className={style.illust_author_link}>
+                    <Link
+                        href={"/users/" + illust.userId}
+                        className={style.illust_author_link}
+                    >
                         {illust.userName}
-                    </a>
+                    </Link>
                 </div>
             )}
         </IllustContext.Consumer>
