@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom/client";
 import React from "react";
 import Tags from "../../components/tags/Tags";
+import originalTagsHide from "./originalTagsHide";
 
 /**
  * 要素が見つかるまで探し続けます。
@@ -73,7 +74,7 @@ async function renderingTagsRoot() {
 
     illustsElement.before(reactRootElem);
 
-    illustsElement.remove();
+    originalTagsHide();
 
     const reactRoot = ReactDOM.createRoot(reactRootElem);
 
