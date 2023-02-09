@@ -9,7 +9,6 @@ export type SearchChangeEvent = string;
 const pageChangeObserver = (): void => {
     let pathNameTmp = "";
     let searchTmp = "";
-
     const observer = new MutationObserver(() => {
         if (location.pathname !== pathNameTmp) {
             document.dispatchEvent(
@@ -22,9 +21,7 @@ const pageChangeObserver = (): void => {
             );
 
             pathNameTmp = location.pathname;
-        }
-
-        if (location.search !== searchTmp) {
+        } else if (location.search !== searchTmp) {
             document.dispatchEvent(
                 new CustomEvent<SearchChangeEvent>(
                     "pixiv-tag-filter-searchChange",
