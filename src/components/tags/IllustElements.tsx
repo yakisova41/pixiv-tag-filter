@@ -4,7 +4,7 @@ import IllustItem from "./IllustItem";
 import { illust } from "../../utils/pixivApi";
 import { IllustContext } from "./IllustContext";
 
-const TagsContainer = ({ illusts }: { illusts: illust[] }) => {
+const IllustElements = ({ illusts }: { illusts: illust[] }) => {
     let key = 0;
     return (
         <ul className={style.tags_container_ul}>
@@ -20,4 +20,4 @@ const TagsContainer = ({ illusts }: { illusts: illust[] }) => {
     );
 };
 
-export default TagsContainer;
+export default IllustElements;

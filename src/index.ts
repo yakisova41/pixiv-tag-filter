@@ -1,7 +1,9 @@
 import addingOptionScreen from "./addingOptionScreen";
 import tags from "./pages/tags/tags";
-import pageChangeObserver, { PageChangeEvent } from "./pageChangeObserver";
-import compatibleConfig from "./compatibleConfig";
+import pageChangeObserver, {
+    PageChangeEvent,
+} from "./utils/pageChangeObserver";
+import compatibleConfig from "./utils/compatibleConfig";
 
 function main(): void {
     compatibleConfig();

@@ -1,7 +1,11 @@
 import React from "react";
 import style from "../tags.css";
 import { useState } from "react";
-import { getCsrf, bookmark_add, bookmark_remove } from "../../../pixivApi";
+import {
+    getCsrf,
+    bookmark_add,
+    bookmark_remove,
+} from "../../../utils/pixivApi";
 
 const IllustItemLike = ({
     liked,

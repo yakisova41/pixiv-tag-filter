@@ -1,4 +1,4 @@
-import { illust } from "../pixivApi";
+import { illust } from "../utils/pixivApi";
 import { Filter } from "./PixivFilter";
 
 export default <Filter>{

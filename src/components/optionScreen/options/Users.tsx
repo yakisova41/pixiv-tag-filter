@@ -1,7 +1,7 @@
 import React from "react";
 import style from "../optionScreen.css";
-import { set, get } from "../../../configOperator";
-import { translate } from "../../../translate";
+import { set, get } from "../../../utils/configOperator";
+import { translate } from "../../../utils/translate";
 
 const Users = () => {
     const getDefaultValue = () => {

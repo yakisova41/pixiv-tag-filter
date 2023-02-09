@@ -1,4 +1,4 @@
-import { illust } from "../pixivApi";
+import { illust } from "../utils/pixivApi";
 
 export class PixivFilter {
     private filters: Filter[] = [];
