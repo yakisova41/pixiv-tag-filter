@@ -36,21 +36,28 @@ function elementFind(selector: string): {
  */
 function findIllustElement(): Promise<HTMLUListElement> {
     return new Promise((resolve) => {
-        const div6pattern = elementFind(
-            "#root > div.charcoal-token > div > div:nth-child(2) > div > div:nth-child(6) > div > section:nth-child(3) > div:nth-child(2) > ul:nth-child(1)"
-        );
-        div6pattern.promise.then((elem: HTMLUListElement) => {
-            div5pattern.stop();
-            resolve(elem);
-        });
+        const selectors = [
+            "#root > div.charcoal-token > div > div:nth-child(2) > div > div:nth-child(6) > div > section:nth-child(2) > div:nth-child(2) > ul:nth-child(1)",
+            "#root > div.charcoal-token > div > div:nth-child(2) > div > div:nth-child(6) > div > section:nth-child(3) > div:nth-child(2) > ul:nth-child(1)",
+            "#root > div.charcoal-token > div > div:nth-child(2) > div > div:nth-child(5) > div > section:nth-child(2) > div:nth-child(2) > ul:nth-child(1)",
+        ];
 
-        const div5pattern = elementFind(
-            "#root > div.charcoal-token > div > div:nth-child(2) > div > div:nth-child(5) > div > section:nth-child(2) > div:nth-child(2) > ul:nth-child(1)"
-        );
+        const finders = [];
 
-        div5pattern.promise.then((elem: HTMLUListElement) => {
-            div6pattern.stop();
-            resolve(elem);
+        selectors.forEach((selector, index) => {
+            const find = elementFind(selector);
+
+            find.promise.then((elem: HTMLUListElement) => {
+                finders.forEach((finder, finderIndex) => {
+                    if (index !== finderIndex) {
+                        finder.stop();
+                    }
+                });
+
+                resolve(elem);
+            });
+
+            finders.push(find);
         });
     });
 }
