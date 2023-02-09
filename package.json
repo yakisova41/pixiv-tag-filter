@@ -47,16 +47,16 @@
         "@version": "0.2.0",
         "@license": "MIT",
         "@author": "yakisova41",
-        "@namespace": "https://yakisova.com/",
+        "@namespace": "https://yakisova.com/pixiv-tag-filter/",
         "@description": "Pixiv Automatically exclude specific tags, auto filter with \"users\"",
         "@description:ja": "Pixiv 特定タグを自動除外 users入りのみに自動絞り込みする機能を追加します。",
         "@description:zh-CN": "Pixiv 自动排除特定标签，自动过滤与 \"users\"。",
         "@match": "https://www.pixiv.net/*",
         "@grant": "none",
         "devServer": {
-            "port": 8008,
+            "port": 3004,
             "host": "localhost",
-            "websocket": 50055,
+            "websocket": 50054,
             "hot": true
         },
         "esbuild": {
