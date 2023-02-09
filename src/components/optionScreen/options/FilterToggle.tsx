@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "../optionScreen.css";
 import { set, get } from "../../../configOperator";
+import { translate } from "../../../translate";
 
 const FilterToggle = () => {
     const [value, setValue] = useState(false);
@@ -24,7 +25,7 @@ const FilterToggle = () => {
 
     return (
         <li className={style.option_panel_setting}>
-            <span>フィルタリングを有効にする</span>
+            <span>{translate("Enable Illustration Refinement")}</span>
             <input type="checkbox" onChange={handleChange} checked={value} />
         </li>
     );

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./optionScreen.css";
 import { set, get } from "../../configOperator";
+import { translate } from "../../translate";
 
 const BlockTags = () => {
     const [tags, setTags] = useState<string[]>([]);
@@ -78,7 +79,9 @@ const BlockTags = () => {
             <input
                 className={style.blocktags_input}
                 type="text"
-                placeholder="Enter the tags name you want to exclude"
+                placeholder={translate(
+                    "Enter the tags name you want to exclude"
+                )}
                 onKeyDown={handleSubmit}
             />
         </>

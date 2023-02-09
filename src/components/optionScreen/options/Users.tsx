@@ -1,6 +1,7 @@
 import React from "react";
 import style from "../optionScreen.css";
 import { set, get } from "../../../configOperator";
+import { translate } from "../../../translate";
 
 const Users = () => {
     const getDefaultValue = () => {
@@ -28,7 +29,7 @@ const Users = () => {
 
     return (
         <li className={style.option_panel_setting}>
-            <span>Users設定</span>
+            <span>{translate("Specify number of bookmarks")}</span>
             <select
                 className={style.option_panel_select}
                 onChange={handleChange}
