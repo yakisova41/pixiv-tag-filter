@@ -1,1 +1,3 @@
-console.log("extension");
+import { main } from "../index";
+
+main();

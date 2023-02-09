@@ -5,7 +5,7 @@ import pageChangeObserver, {
 } from "./utils/pageChangeObserver";
 import compatibleConfig from "./utils/compatibleConfig";
 
-function main(): void {
+export function main(): void {
     compatibleConfig();
     addingOptionScreen();
     pageChangeObserver();
