@@ -6,14 +6,9 @@
     "description": "__MSG_Description__",
     "content_scripts": [
         {
-            "matches": ["https://example.com/*"],
+            "matches": ["https://www.pixiv.net/*"],
             "js": ["contentScript.js"]
         }
     ],
-    "default_locale": "en",
-    "icons": {
-        "16": "icon16.png",
-        "48": "icon48.png",
-        "128": "icon128.png"
-    }
+    "default_locale": "en"
 }
