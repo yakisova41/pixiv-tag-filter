@@ -7,10 +7,10 @@ export class PixivFilter {
         this.filters.push(filter);
     }
 
-    public run(ilusts: illust[]): illust[] {
+    public run(illusts: illust[]): illust[] {
         const result: illust[] = [];
 
-        ilusts.forEach((ilust, index) => {
+        illusts.forEach((ilust) => {
             let remove = false;
 
             this.filters.forEach((filter) => {
