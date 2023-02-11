@@ -67,41 +67,46 @@ function findIllustElement(): Promise<HTMLUListElement> {
 /**
  * tagsページのreactrootを作成します。
  */
-async function renderingTagsRoot() {
-    const illustsElement = await findIllustElement();
+async function renderingTagsRoot(pathdata: PageChangeEvent) {
+    if (pathdata.before.split("/")[1] !== "tags") {
+        const illustsElement = await findIllustElement();
 
-    const reactRootElem = document.createElement("div");
-    reactRootElem.id = "pixiv_tag_filter_tags_root";
+        const reactRootElem = document.createElement("div");
+        reactRootElem.id = "pixiv_tag_filter_tags_root";
 
-    illustsElement.before(reactRootElem);
+        illustsElement.before(reactRootElem);
 
-    originalTagsHide();
+        originalTagsHide();
 
-    const reactRoot = ReactDOM.createRoot(reactRootElem);
+        const reactRoot = ReactDOM.createRoot(reactRootElem);
 
-    reactRoot.render(
-        <React.StrictMode>
-            <Tags />
-        </React.StrictMode>
-    );
-    /**
-     * ページ変更時にreactrootをunmount
-     * @param e
-     */
-    const pageChangeLisnter = (e: CustomEvent<PageChangeEvent>) => {
+        reactRoot.render(
+            <React.StrictMode>
+                <Tags />
+            </React.StrictMode>
+        );
+
         /**
-         * ページ推移先もtagsページだった場合はunmountしない
+         * ページ変更時にreactrootをunmount
+         * @param e
          */
-        if (e.detail.new.split("/")[1] !== "tags") {
-            reactRoot.unmount();
-        }
-
-        document.removeEventListener(
+        const pageChangeLisnter = (e: CustomEvent<PageChangeEvent>) => {
+            /**
+             * ページ推移先もtagsページだった場合はunmountしない
+             */
+            if (e.detail.new.split("/")[1] !== "tags") {
+                reactRoot.unmount();
+                document.removeEventListener(
+                    "pixiv-tag-filter-pageChange",
+                    pageChangeLisnter
+                );
+            }
+        };
+        document.addEventListener(
             "pixiv-tag-filter-pageChange",
             pageChangeLisnter
         );
-    };
-    document.addEventListener("pixiv-tag-filter-pageChange", pageChangeLisnter);
+    }
 }
 
 export default renderingTagsRoot;

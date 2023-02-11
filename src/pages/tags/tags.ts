@@ -48,8 +48,7 @@ function tags(searchKeyword: string, pathdata: PageChangeEvent) {
          * ページ読み込み時
          */
         setTimeout(async () => {
-            await renderingTagsRoot();
-
+            await renderingTagsRoot(pathdata);
             /**
              * tags->artworks->tags時のキャッシュ処理
              */
