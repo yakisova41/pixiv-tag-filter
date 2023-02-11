@@ -5,8 +5,10 @@ import tagFilter from "../../filter/tagFilter";
 import undefinedFilter from "../../filter/undefinedFilter";
 import renderingTagsRoot from "./renderingTagsRoot";
 import { getSearchQuery } from "../../utils/getSearchQuery";
+import { setCache, getCache } from "./tagsCache";
+import { PageChangeEvent } from "../../utils/pageChangeObserver";
 
-function tags(searchKeyword: string) {
+function tags(searchKeyword: string, pathdata: PageChangeEvent) {
     if (get().block) {
         const filter = new PixivFilter();
         filter.addFilter(tagFilter);
@@ -30,6 +32,8 @@ function tags(searchKeyword: string) {
 
             const sortResult = filter.run(searchResponse.body.illustManga.data);
 
+            setCache(sortResult);
+
             document.dispatchEvent(
                 new CustomEvent("pixiv-tag-filter-fetch", {
                     detail: sortResult,
@@ -42,7 +46,46 @@ function tags(searchKeyword: string) {
          */
         setTimeout(async () => {
             await renderingTagsRoot();
-            renderingWithSearchData(searchKeyword);
+
+            /**
+             * tags->artworks->tags時のキャッシュ処理
+             * コールバック地獄
+             */
+            if (pathdata.before.split("/")[1] === "artworks") {
+                const cache = getCache();
+
+                if (cache !== undefined) {
+                    setTimeout(() => {
+                        console.log("use cache");
+
+                        document.dispatchEvent(
+                            new CustomEvent("pixiv-tag-filter-fetch", {
+                                detail: cache.data,
+                            })
+                        );
+
+                        const renderListener = () => {
+                            setTimeout(() => {
+                                window.scroll({
+                                    top: cache.scroll,
+                                });
+                            });
+                            document.removeEventListener(
+                                "pixiv-tag-filter-render-success",
+                                renderListener
+                            );
+                        };
+                        document.addEventListener(
+                            "pixiv-tag-filter-render-success",
+                            renderListener
+                        );
+                    });
+                } else {
+                    renderingWithSearchData(searchKeyword);
+                }
+            } else {
+                renderingWithSearchData(searchKeyword);
+            }
         });
 
         /**

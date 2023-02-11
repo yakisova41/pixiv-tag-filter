@@ -17,7 +17,7 @@ export function main(): void {
 
             switch (split[1]) {
                 case "tags":
-                    tags(split[2]);
+                    tags(split[2], e.detail);
                     break;
                 default:
                     break;

@@ -14,6 +14,10 @@ const Illusts = () => {
 
     useLayoutEffect(() => {
         setShow(true);
+
+        document.dispatchEvent(
+            new CustomEvent("pixiv-tag-filter-render-success")
+        );
     });
 
     return (

@@ -1,4 +1,5 @@
 import React, { createContext, FC } from "react";
+import { appendCache } from "../pages/tags/tagsCache";
 
 /**
  * 元サイトのreact-routerのpropsを返します
@@ -27,6 +28,8 @@ export const Link: FC<LinkProps> = (props) => {
         e: React.MouseEvent<HTMLAnchorElement>,
         router: Router
     ) => {
+        appendCache("scroll", window.scrollY);
+
         router.push(props.href);
         window.scroll({
             top: 0,
