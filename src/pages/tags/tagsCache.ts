@@ -52,7 +52,7 @@ export const getCache = (): PixivTagFilterCache | undefined => {
     const now = Date.now();
     const diff = now - time;
 
-    if (diff < 10000) {
+    if (diff < 30000) {
         return { status: "OK", ...data };
     } else {
         return { status: "TIMEOUT", ...data };
