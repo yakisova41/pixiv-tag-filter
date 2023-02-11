@@ -13,7 +13,7 @@ export function main(): void {
     document.addEventListener(
         "pixiv-tag-filter-pageChange",
         (e: CustomEvent<PageChangeEvent>) => {
-            const split = e.detail.split("/");
+            const split = e.detail.new.split("/");
 
             switch (split[1]) {
                 case "tags":

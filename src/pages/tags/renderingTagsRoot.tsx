@@ -2,6 +2,7 @@ import ReactDOM from "react-dom/client";
 import React from "react";
 import Tags from "../../components/tags/Tags";
 import originalTagsHide from "./originalTagsHide";
+import { PageChangeEvent } from "../../utils/pageChangeObserver";
 
 /**
  * 要素が見つかるまで探し続けます。
@@ -87,11 +88,11 @@ async function renderingTagsRoot() {
      * ページ変更時にreactrootをunmount
      * @param e
      */
-    const pageChangeLisnter = (e: CustomEvent<string>) => {
+    const pageChangeLisnter = (e: CustomEvent<PageChangeEvent>) => {
         /**
          * ページ推移先もtagsページだった場合はunmountしない
          */
-        if (e.detail.split("/")[1] !== "tags") {
+        if (e.detail.new.split("/")[1] !== "tags") {
             reactRoot.unmount();
         }
 

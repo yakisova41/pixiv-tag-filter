@@ -1,5 +1,11 @@
-export type PageChangeEvent = string;
-export type SearchChangeEvent = string;
+export type PageChangeEvent = {
+    before: string;
+    new: string;
+};
+export type SearchChangeEvent = {
+    before: string;
+    new: string;
+};
 
 /**
  * DOMの変更をobserveし、
@@ -9,13 +15,14 @@ export type SearchChangeEvent = string;
 const pageChangeObserver = (): void => {
     let pathNameTmp = "";
     let searchTmp = "";
+
     const observer = new MutationObserver(() => {
         if (location.pathname !== pathNameTmp) {
             document.dispatchEvent(
                 new CustomEvent<PageChangeEvent>(
                     "pixiv-tag-filter-pageChange",
                     {
-                        detail: location.pathname,
+                        detail: { before: pathNameTmp, new: location.pathname },
                     }
                 )
             );
@@ -26,7 +33,7 @@ const pageChangeObserver = (): void => {
                 new CustomEvent<SearchChangeEvent>(
                     "pixiv-tag-filter-searchChange",
                     {
-                        detail: location.search,
+                        detail: { before: searchTmp, new: location.search },
                     }
                 )
             );
