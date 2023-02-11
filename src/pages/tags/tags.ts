@@ -6,7 +6,10 @@ import undefinedFilter from "../../filter/undefinedFilter";
 import renderingTagsRoot from "./renderingTagsRoot";
 import { getSearchQuery } from "../../utils/getSearchQuery";
 import { setCache, getCache } from "./tagsCache";
-import { PageChangeEvent } from "../../utils/pageChangeObserver";
+import {
+    PageChangeEvent,
+    SearchChangeEvent,
+} from "../../utils/pageChangeObserver";
 
 function tags(searchKeyword: string, pathdata: PageChangeEvent) {
     if (get().block) {
@@ -49,37 +52,61 @@ function tags(searchKeyword: string, pathdata: PageChangeEvent) {
 
             /**
              * tags->artworks->tags時のキャッシュ処理
-             * コールバック地獄
              */
             if (pathdata.before.split("/")[1] === "artworks") {
+                let isScroll = false;
                 const cache = getCache();
 
                 if (cache !== undefined) {
-                    setTimeout(() => {
-                        console.log("use cache");
-
-                        document.dispatchEvent(
-                            new CustomEvent("pixiv-tag-filter-fetch", {
-                                detail: cache.data,
-                            })
-                        );
-
-                        const renderListener = () => {
-                            setTimeout(() => {
-                                window.scroll({
-                                    top: cache.scroll,
-                                });
+                    const renderListener = () => {
+                        isScroll = true;
+                        setTimeout(() => {
+                            window.scroll({
+                                top: cache.scroll,
                             });
-                            document.removeEventListener(
-                                "pixiv-tag-filter-render-success",
-                                renderListener
-                            );
-                        };
-                        document.addEventListener(
+                        }, 1);
+                        document.removeEventListener(
                             "pixiv-tag-filter-render-success",
                             renderListener
                         );
-                    });
+                    };
+                    document.addEventListener(
+                        "pixiv-tag-filter-render-success",
+                        renderListener
+                    );
+
+                    if (cache.status === "OK") {
+                        setTimeout(() => {
+                            document.dispatchEvent(
+                                new CustomEvent("pixiv-tag-filter-fetch", {
+                                    detail: cache.data,
+                                })
+                            );
+                            setCache(cache.data);
+
+                            const interval = setInterval(() => {
+                                if (isScroll) {
+                                    window.scroll({
+                                        top: cache.scroll,
+                                    });
+                                    clearInterval(interval);
+                                }
+                            });
+                        });
+                    }
+
+                    if (cache.status === "TIMEOUT") {
+                        await renderingWithSearchData(searchKeyword);
+
+                        const interval = setInterval(() => {
+                            if (isScroll) {
+                                window.scroll({
+                                    top: cache.scroll,
+                                });
+                                clearInterval(interval);
+                            }
+                        });
+                    }
                 } else {
                     renderingWithSearchData(searchKeyword);
                 }
@@ -91,9 +118,13 @@ function tags(searchKeyword: string, pathdata: PageChangeEvent) {
         /**
          * queryが変更された時
          */
-        const searchChangeListener = () => {
-            console.log("search change");
-            renderingWithSearchData(searchKeyword);
+        const searchChangeListener = ({
+            detail,
+        }: CustomEvent<SearchChangeEvent>) => {
+            if (detail.before.path.split("/")[1] === "tags") {
+                console.log("search change");
+                renderingWithSearchData(searchKeyword);
+            }
         };
         document.addEventListener(
             "pixiv-tag-filter-searchChange",

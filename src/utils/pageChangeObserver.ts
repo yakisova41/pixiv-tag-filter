@@ -3,8 +3,8 @@ export type PageChangeEvent = {
     new: string;
 };
 export type SearchChangeEvent = {
-    before: string;
-    new: string;
+    before: { search: string; path: string };
+    new: { search: string; path: string };
 };
 
 /**
@@ -14,7 +14,8 @@ export type SearchChangeEvent = {
  */
 const pageChangeObserver = (): void => {
     let pathNameTmp = "";
-    let searchTmp = "";
+    let searchTmp = location.search;
+    let searchPathTmp = location.pathname;
 
     const observer = new MutationObserver(() => {
         if (location.pathname !== pathNameTmp) {
@@ -33,11 +34,18 @@ const pageChangeObserver = (): void => {
                 new CustomEvent<SearchChangeEvent>(
                     "pixiv-tag-filter-searchChange",
                     {
-                        detail: { before: searchTmp, new: location.search },
+                        detail: {
+                            before: { search: searchTmp, path: searchPathTmp },
+                            new: {
+                                search: location.search,
+                                path: location.pathname,
+                            },
+                        },
                     }
                 )
             );
             searchTmp = location.search;
+            searchPathTmp = location.pathname;
         }
     });
 

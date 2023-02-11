@@ -36,7 +36,7 @@ export const appendCache = (key: string, value: any) => {
  * 返すキャッシュがない場合、もしくはキャッシュから10秒立っている場合はundefinedを返します。
  * @returns キャッシュ
  */
-export const getCache = () => {
+export const getCache = (): PixivTagFilterCache | undefined => {
     const data = JSON.parse(localStorage.getItem("pixiv-tag-filter-cache"));
 
     if (data === undefined) {
@@ -53,8 +53,16 @@ export const getCache = () => {
     const diff = now - time;
 
     if (diff < 10000) {
-        return data;
+        return { status: "OK", ...data };
+    } else {
+        return { status: "TIMEOUT", ...data };
     }
+};
 
-    return undefined;
+export type PixivTagFilterCache = {
+    status: "OK" | "TIMEOUT";
+    time: number;
+    path: string;
+    data: illust[];
+    scroll?: number;
 };
