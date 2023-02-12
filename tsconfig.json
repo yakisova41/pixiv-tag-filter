@@ -1,18 +1,18 @@
 {
-  "compilerOptions": {
-    "lib": ["ES2022", "dom", "dom.iterable"],
-    "module": "commonjs",
-    "target": "ES2022",
-    "moduleResolution": "node",
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "jsx": "react-jsx",
-
-  },
-  "typeRoots" : [
-    "./src/types.d.ts",
-    "node_modules/@types/"
-  ],
-  "include": ["./src/*"]
+    "compilerOptions": {
+        "lib": ["ESNext", "dom", "dom.iterable"],
+        "module": "commonjs",
+        "target": "ESNext",
+        "moduleResolution": "node",
+        "allowJs": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "types": ["node"],
+        "plugins": [],
+        "skipLibCheck": true,
+        "jsx": "react"
+    },
+    "exclude": ["node_modules"],
+    "typeRoots": ["@types/chrome"],
+    "includes": ["src/**/*", "build/*"]
 }

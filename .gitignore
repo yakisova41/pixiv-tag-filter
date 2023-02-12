@@ -1,5 +1,6 @@
+bun.lockb
 build/tmp
 dist
+build/dist
 node_modules
-bun.lockb
 package-lock.json
