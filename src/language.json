@@ -1,11 +1,30 @@
 {
     "Specify number of bookmarks": {
-        "ja": "ブックマーク数指定"
+        "ja": "ブックマーク数指定",
+        "zh": "指定书签的数量"
     },
     "Enable Illustration Refinement": {
-        "ja": "絞り込みを有効にする"
+        "ja": "絞り込みを有効にする",
+        "zh": "启用插图细化功能"
     },
     "Enter the tags name you want to exclude": {
-        "ja": "絞り込むタグをEnterで追加"
+        "ja": "絞り込むタグをEnterで追加",
+        "zh": "输入你想排除的标签名称"
+    },
+    "There are no Illusts": {
+        "ja": "作品がありません",
+        "zh": "没有插图"
+    },
+    "All illustrations on this page have been narrowed down": {
+        "ja": "このページの作品はすべて絞り込みされました。",
+        "zh": "本页的所有插图都已缩小了范围"
+    },
+    "Please try moving pages or changing your search criteria": {
+        "ja": "ページの移動か、絞り込み条件の変更をお試しください。",
+        "zh": "请尝试移动页面或改变您的搜索标准"
+    },
+    "Senkaku Islands": {
+        "ja": "尖閣諸島",
+        "zh": "釣魚台"
     }
 }
