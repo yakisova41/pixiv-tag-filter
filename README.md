@@ -1,15 +1,24 @@
-# userscript-esbuild-ts
+# pixiv-tag-filter
 
-To install dependencies:
+![Greasy Fork](https://img.shields.io/greasyfork/l/456536-pixiv-automatic-exclusion-search)
+![Greasy Fork](https://img.shields.io/greasyfork/dt/456536-pixiv-automatic-exclusion-search)
 
-```bash
-bun install
+[Pixiv](https://pixiv.net)の検索結果をページごとに絞り込みすることが出来る UserScript です。
+
+## 絞り込み機能
+
+-   特定のタグ
+-   ブックマーク数
+
+# 開発
+
+## ビルド方法
+
+```
+npm install
+npm run build:u
 ```
 
-To run:
+## 注意
 
-```build
-bun run build
-```
-
-This project was created using `bun init` in bun v0.1.13. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Chrome 拡張機能として使用すると元ページの React-router の取得がうまく動作しません。
