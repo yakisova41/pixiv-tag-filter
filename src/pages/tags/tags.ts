@@ -120,7 +120,7 @@ function tags(searchKeyword: string, pathdata: PageChangeEvent) {
         const searchChangeListener = ({
             detail,
         }: CustomEvent<SearchChangeEvent>) => {
-            if (detail.before.path.split("/")[1] === "tags") {
+            if (detail.before.path.split("/")[1] !== "artworks") {
                 console.log("search change");
                 renderingWithSearchData(searchKeyword);
             }
