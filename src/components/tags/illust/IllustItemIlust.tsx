@@ -4,6 +4,7 @@ import IllustItemLike from "./IllustItemLike";
 import Sensitive from "./Sensitive";
 import { Link } from "../../Router";
 import { IllustContext } from "../IllustContext";
+import { appendCache } from "../../../pages/tags/tagsCache";
 
 const illustItemillust = ({}: {}) => {
     const r18type = (tags: string[]) => {
@@ -16,6 +17,10 @@ const illustItemillust = ({}: {}) => {
         }
     };
 
+    const handleClick = () => {
+        appendCache("scroll", window.scrollY);
+    };
+
     return (
         <IllustContext.Consumer>
             {(illust) => (
@@ -24,6 +29,7 @@ const illustItemillust = ({}: {}) => {
                         <Link
                             className={style.illust_item_link}
                             href={"/artworks/" + illust.id}
+                            onClick={handleClick}
                         >
                             <div className={style.illust_item_illust_img_outer}>
                                 <img

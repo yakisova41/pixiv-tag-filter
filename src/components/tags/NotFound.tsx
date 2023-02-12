@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./tags.css";
+import { translate } from "../../utils/translate";
 
 const NotFound = () => {
     return (
@@ -23,12 +24,18 @@ const NotFound = () => {
                     ></path>
                 </svg>
             </div>
-            <span className={style.not_found_text}>作品がありません</span>
-            <span className={style.not_found_text_mini}>
-                このページの作品はすべて絞り込みされました。
+            <span className={style.not_found_text}>
+                {translate("There are no Illusts")}
             </span>
             <span className={style.not_found_text_mini}>
-                ページの移動か、絞り込み条件の変更をお試しください。
+                {translate(
+                    "All illustrations on this page have been narrowed down"
+                )}
+            </span>
+            <span className={style.not_found_text_mini}>
+                {translate(
+                    "Please try moving pages or changing your search criteria"
+                )}
             </span>
             <span className={style.not_found_text_mini}>Pixiv tag filter</span>
         </div>
