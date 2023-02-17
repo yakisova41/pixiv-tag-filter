@@ -118,7 +118,7 @@
     line-height: 22px;
     font-size: 14px;
     font-weight: bold;
-    color: rgb(245, 245, 245);
+
     transition: color 0.2s ease 0s;
 }
 
@@ -141,7 +141,7 @@
     min-width: 0px;
     line-height: 22px;
     font-size: 14px;
-    color: rgb(214, 214, 214);
+
     text-decoration: none;
     text-overflow: ellipsis;
     white-space: nowrap;
