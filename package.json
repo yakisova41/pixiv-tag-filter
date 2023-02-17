@@ -43,7 +43,7 @@
         "@name": "Pixiv Automatic exclusion search",
         "@name:zh-CN": "Pixiv 自动排除搜索",
         "@name:ja": "Pixiv 自動で除外検索",
-        "@version": "0.2.1",
+        "@version": "0.2.2",
         "@license": "MIT",
         "@author": "yakisova41",
         "@namespace": "https://yakisova.com/",
