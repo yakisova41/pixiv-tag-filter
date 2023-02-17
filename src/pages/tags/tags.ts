@@ -12,7 +12,9 @@ import {
 } from "../../utils/pageChangeObserver";
 
 function tags(searchKeyword: string, pathdata: PageChangeEvent) {
-    if (get().block) {
+    const { block } = get();
+
+    if (block) {
         const filter = new PixivFilter();
         filter.addFilter(tagFilter);
         filter.addFilter(undefinedFilter);
@@ -23,11 +25,15 @@ function tags(searchKeyword: string, pathdata: PageChangeEvent) {
          */
         const renderingWithSearchData = async (searchKeyword: string) => {
             const { pageNumber, mode, order } = getSearchQuery();
-            const { users } = get();
+            const { users, blocklist } = get();
 
             const usersText = users === false ? "" : users + "users";
             const searchResponse = await search(
-                searchKeyword + " " + usersText,
+                searchKeyword +
+                    " " +
+                    usersText +
+                    " " +
+                    blocklist.map((blocktag) => "-" + blocktag).join(" "),
                 pageNumber,
                 mode,
                 order
