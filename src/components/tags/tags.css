@@ -26,6 +26,11 @@
 
 .illust_item_link {
     text-decoration: none;
+    transition: ease opacity 250ms;
+}
+
+.illust_item_link:hover {
+    opacity: 0.7;
 }
 
 .illust_item_illust_img_outer {
