@@ -5,6 +5,7 @@ import Sensitive from "./Sensitive";
 import { Link } from "../../Router";
 import { IllustContext } from "../IllustContext";
 import { appendCache } from "../../../pages/tags/tagsCache";
+import PageCount from "./PageCount";
 
 const illustItemillust = ({}: {}) => {
     const r18type = (tags: string[]) => {
@@ -38,7 +39,13 @@ const illustItemillust = ({}: {}) => {
                                 />
                             </div>
 
-                            <Sensitive value={r18type(illust.tags)} />
+                            <div className={style.top_container}>
+                                <Sensitive value={r18type(illust.tags)} />
+
+                                {illust.pageCount !== 1 && (
+                                    <PageCount count={illust.pageCount} />
+                                )}
+                            </div>
                         </Link>
 
                         <IllustItemLike

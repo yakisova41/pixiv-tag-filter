@@ -10,5 +10,11 @@
             "js": ["contentScript.js"]
         }
     ],
+    "web_accessible_resources": [
+        {
+            "resources": ["embed.js"],
+            "matches": ["https://www.pixiv.net/*"]
+        }
+    ],
     "default_locale": "en"
 }

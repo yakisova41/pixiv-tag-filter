@@ -11,9 +11,7 @@ const Primary = () => {
             </div>
 
             <div className={style.option_panel_bottom}>
-                <span>
-                    Pixiv tag filter v{packageJson.userScript["@version"]}
-                </span>
+                <span>Pixiv tag filter v{packageJson.version}</span>
             </div>
         </div>
     );
