@@ -24,15 +24,13 @@
         "fs-extra": "^11.1.0",
         "glob": "^8.1.0",
         "node-css-require": "^0.4.6",
-        "react-dom": "^18.2.0",
         "sass": "^1.58.3",
         "sha256": "^0.2.0",
         "typescript": "^4.9.5",
         "ws": "^8.12.1"
     },
     "dependencies": {
-        "@camome/core": "^0.0.28",
-        "@camome/system": "^0.1.24",
+        "react-dom": "^18.2.0",
         "react": "^18.2.0"
     },
     "scripts": {
