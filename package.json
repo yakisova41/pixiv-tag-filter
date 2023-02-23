@@ -1,5 +1,5 @@
 {
-    "name": "userscript-esbuild-ts",
+    "name": "pixiv-automatic-exclusion-search",
     "license": "MIT",
     "version": "0.2.3",
     "type": "commonjs",
