@@ -26,6 +26,7 @@
         "node-css-require": "^0.4.6",
         "sass": "^1.58.3",
         "sha256": "^0.2.0",
+        "ts-extension-builder": "^0.2.7",
         "typescript": "^4.9.5",
         "ws": "^8.12.1"
     },
@@ -34,10 +35,9 @@
         "react": "^18.2.0"
     },
     "scripts": {
-        "esbuild-register": "node --require esbuild-register",
-        "build:userscript": "npm run esbuild-register build/ build mode=userScript",
-        "build:extension": "npm run esbuild-register build/ build mode=extension",
+        "build:userscript": "npx ts-extension-builder build type=userscript",
+        "build:extension": "npx ts-extension-builder build type=extension",
         "build": "npm run build:userscript && npm run build:extension",
-        "dev": "npm run esbuild-register build/ dev mode=userScript"
+        "dev": "npx ts-extension-builder dev"
     }
 }
