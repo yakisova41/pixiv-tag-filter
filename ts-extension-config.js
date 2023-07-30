@@ -56,7 +56,11 @@ module.exports = {
     },
   },
   esBuild: {
-    plugins: [scssPlugin()],
+    plugins: [
+      scssPlugin({
+        jsCSSInject: true,
+      }),
+    ],
     target: "es2022",
     entryPoints: [path.join(__dirname, "src/index.ts")],
   },
