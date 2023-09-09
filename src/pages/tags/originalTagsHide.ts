@@ -4,19 +4,11 @@
 export default () => {
   const overRideStyle = document.createElement("style");
   overRideStyle.innerHTML = `
-    #root > .charcoal-token > div > div:nth-child(2) > div > div:nth-child(6) > div > section > div:nth-child(2) > ul{
+    #root > div.charcoal-token > div > div:nth-child(3) > div > div > div:nth-child(6)  > section:nth-child(2) > div:nth-child(2) > div:nth-child(1) > ul {
         display: none !important;
     }
 
-    #root > .charcoal-token > div > div:nth-child(2) > div > div:nth-child(5) > div > section > div:nth-child(2) > ul{
-        display: none !important;
-    }
-
-    #root > div.charcoal-token > div > div:nth-child(3) > div > div > div:nth-child(6) > div > section > div:nth-child(2) > ul {
-        display: none !important;
-    }
-
-    #root > div.charcoal-token > div > div:nth-child(3) > div > div > div:nth-child(5) > div > section > div:nth-child(2) > ul {
+    #root > div.charcoal-token > div > div:nth-child(3) > div > div > div:nth-child(5)  > section:nth-child(2) > div:nth-child(2) > div:nth-child(1) > ul {
         display: none !important;
     }
     `;
