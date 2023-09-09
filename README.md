@@ -3,22 +3,10 @@
 ![Greasy Fork](https://img.shields.io/greasyfork/l/456536-pixiv-automatic-exclusion-search)
 ![Greasy Fork](https://img.shields.io/greasyfork/dt/456536-pixiv-automatic-exclusion-search)
 
-[Pixiv](https://pixiv.net)の検索結果をページごとに絞り込みすることが出来る UserScript です。
+[Pixiv](https://pixiv.net)の検索結果に指定した除外タグを自動的に追加するユーザースクリプトです
 
-## 絞り込み機能
+## 機能
+-   除外タグを指定
+-   ブックマーク数(00users入り)を絞り込むタグの自動追加
 
--   特定のタグ
--   ブックマーク数
-
-# 開発
-
-## ビルド方法
-
-```
-npm install
-npm run build:u
-```
-
-## 注意
-
-Chrome 拡張機能として使用すると元ページの React-router の取得がうまく動作しません。
+![screenshot-ptf](https://github.com/yakisova41/pixiv-tag-filter/assets/75610521/6faf10d7-8505-4137-ad2d-8ab7b15d1be9)
