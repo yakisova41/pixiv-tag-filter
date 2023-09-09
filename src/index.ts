@@ -17,7 +17,15 @@ export default function main(): void {
 
       switch (split[1]) {
         case "tags":
-          tags(split[2], e.detail);
+          const typeStr = split[3];
+          if (
+            typeStr === "artworks" ||
+            typeStr === "manga" ||
+            typeStr === "illustrations"
+          ) {
+            tags(split[2], e.detail, typeStr);
+          }
+
           break;
         default:
           break;
