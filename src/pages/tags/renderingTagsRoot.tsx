@@ -67,7 +67,17 @@ function findIllustElement(): Promise<HTMLUListElement> {
  * tagsページのreactrootを作成します。
  */
 async function renderingTagsRoot(pathdata: PageChangeEvent) {
-  if (pathdata.before.split("/")[1] !== "tags") {
+  const splitPath = pathdata.new.split("/");
+
+  /**
+   * 小説またはtagsページのトップの場合はreactをレンダリングしません
+   */
+  if (
+    !(splitPath[1] === "tags" && splitPath[3] === undefined) &&
+    splitPath[3] !== "novels"
+  ) {
+    console.log("render");
+
     const illustsElement = await findIllustElement();
 
     const reactRootElem = document.createElement("div");
@@ -90,16 +100,12 @@ async function renderingTagsRoot(pathdata: PageChangeEvent) {
      * @param e
      */
     const pageChangeLisnter = (e: CustomEvent<PageChangeEvent>) => {
-      /**
-       * ページ推移先もtagsページだった場合はunmountしない
-       */
-      if (e.detail.new.split("/")[1] !== "tags") {
-        reactRoot.unmount();
-        document.removeEventListener(
-          "pixiv-tag-filter-pageChange",
-          pageChangeLisnter
-        );
-      }
+      reactRoot.unmount();
+      reactRootElem.remove();
+      document.removeEventListener(
+        "pixiv-tag-filter-pageChange",
+        pageChangeLisnter
+      );
     };
     document.addEventListener("pixiv-tag-filter-pageChange", pageChangeLisnter);
   }
