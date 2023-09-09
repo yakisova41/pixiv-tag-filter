@@ -1,4 +1,4 @@
-import { search } from "../../utils/pixivApi";
+import { illust, search } from "../../utils/pixivApi";
 import { get } from "../../utils/configOperator";
 import { PixivFilter } from "../../filter/PixivFilter";
 import tagFilter from "../../filter/tagFilter";
@@ -11,7 +11,11 @@ import {
   SearchChangeEvent,
 } from "../../utils/pageChangeObserver";
 
-function tags(searchKeyword: string, pathdata: PageChangeEvent) {
+function tags(
+  searchKeyword: string,
+  pathdata: PageChangeEvent,
+  type: "artworks" | "manga" | "illustrations"
+) {
   const { block } = get();
 
   if (block) {
@@ -36,10 +40,23 @@ function tags(searchKeyword: string, pathdata: PageChangeEvent) {
           blocklist.map((blocktag) => "-" + blocktag).join(" "),
         pageNumber,
         mode,
-        order
+        order,
+        type
       );
 
-      const sortResult = filter.run(searchResponse.body.illustManga.data);
+      let data: illust[];
+      switch (type) {
+        case "artworks":
+          data = searchResponse.body.illustManga.data;
+          break;
+        case "manga":
+          data = searchResponse.body.manga.data;
+          break;
+        case "illustrations":
+          data = searchResponse.body.illust.data;
+          break;
+      }
+      const sortResult = filter.run(data);
 
       setCache(sortResult);
 

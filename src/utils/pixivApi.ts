@@ -200,6 +200,16 @@ export interface pixivResponse {
       total: number;
       bookmarkRanges: { min: null | number; max: null | number }[];
     };
+    manga?: {
+      data: illust[];
+      total: number;
+      bookmarkRanges: { min: null | number; max: null | number }[];
+    };
+    illust?: {
+      data: illust[];
+      total: number;
+      bookmarkRanges: { min: null | number; max: null | number }[];
+    };
     works?: illust[];
     total?: number;
     bookmarkTags?: string[];
