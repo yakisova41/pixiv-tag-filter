@@ -39,12 +39,8 @@ function elementFind(selector: string): {
 function findIllustElement(): Promise<HTMLUListElement> {
   return new Promise((resolve) => {
     const selectors = [
-      "#root > div.charcoal-token > div > div:nth-child(3) > div > div > div:nth-child(6) > div > section:nth-child(3) > div:nth-child(2) > ul:nth-child(1)",
-      "#root > div.charcoal-token > div > div:nth-child(3) > div > div > div:nth-child(6) > div > section:nth-child(2) > div:nth-child(2) > ul:nth-child(1)",
-      "#root > div.charcoal-token > div > div:nth-child(3) > div > div > div:nth-child(5) > div > section:nth-child(2) > div:nth-child(2) > ul:nth-child(1)",
-      "#root > div.charcoal-token > div > div:nth-child(2) > div > div:nth-child(6) > div > section:nth-child(2) > div:nth-child(2) > ul:nth-child(1)",
-      "#root > div.charcoal-token > div > div:nth-child(2) > div > div:nth-child(6) > div > section:nth-child(3) > div:nth-child(2) > ul:nth-child(1)",
-      "#root > div.charcoal-token > div > div:nth-child(2) > div > div:nth-child(5) > div > section:nth-child(2) > div:nth-child(2) > ul:nth-child(1)",
+      "#root > div.charcoal-token > div > div:nth-child(3) > div > div > div:nth-child(6)  > section:nth-child(2) > div:nth-child(2) > div:nth-child(1) > ul",
+      "#root > div.charcoal-token > div > div:nth-child(3) > div > div > div:nth-child(5)  > section:nth-child(2) > div:nth-child(2) > div:nth-child(1) > ul",
     ];
 
     const finders = [];
