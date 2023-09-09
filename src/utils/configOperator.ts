@@ -3,18 +3,18 @@
  * なければ作成
  */
 export const configExist = () => {
-    const config = localStorage.getItem("pixiv-tag-filter-config");
+  const config = localStorage.getItem("pixiv-tag-filter-config");
 
-    if (config === null) {
-        localStorage.setItem(
-            "pixiv-tag-filter-config",
-            JSON.stringify({
-                blocklist: [],
-                block: true,
-                users: false,
-            })
-        );
-    }
+  if (config === null) {
+    localStorage.setItem(
+      "pixiv-tag-filter-config",
+      JSON.stringify({
+        blocklist: [],
+        block: true,
+        users: false,
+      })
+    );
+  }
 };
 
 /**
@@ -22,8 +22,8 @@ export const configExist = () => {
  * @returns configのオブジェクト
  */
 export const get = (): TagFilterConfig => {
-    configExist();
-    return JSON.parse(localStorage.getItem("pixiv-tag-filter-config"));
+  configExist();
+  return JSON.parse(localStorage.getItem("pixiv-tag-filter-config"));
 };
 
 /**
@@ -32,28 +32,32 @@ export const get = (): TagFilterConfig => {
  * @param value configに設定する値
  */
 export const set = (key: keyof TagFilterConfig, value: any) => {
-    configExist();
+  configExist();
 
-    const config = get();
-    config[key] = value;
+  const config = get();
+  config[key] = value;
 
-    localStorage.setItem("pixiv-tag-filter-config", JSON.stringify(config));
+  localStorage.setItem("pixiv-tag-filter-config", JSON.stringify(config));
 };
 
 export type Users =
-    | "00"
-    | "50"
-    | "100"
-    | "300"
-    | "500"
-    | "1000"
-    | "5000"
-    | "10000"
-    | "20000"
-    | "30000";
+  | "00"
+  | "00"
+  | "000"
+  | "50"
+  | "100"
+  | "300"
+  | "500"
+  | "1000"
+  | "5000"
+  | "10000"
+  | "20000"
+  | "30000"
+  | "40000"
+  | "50000";
 
 export type TagFilterConfig = {
-    blocklist?: string[];
-    block?: boolean;
-    users?: false | Users;
+  blocklist?: string[];
+  block?: boolean;
+  users?: false | Users;
 };
