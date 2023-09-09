@@ -3,9 +3,10 @@
 ![Greasy Fork](https://img.shields.io/greasyfork/l/456536-pixiv-automatic-exclusion-search)
 ![Greasy Fork](https://img.shields.io/greasyfork/dt/456536-pixiv-automatic-exclusion-search)
 
+[Greasyforkでインストール](https://greasyfork.org/ja/scripts/456536-pixiv-automatic-exclusion-search)
+
 [Pixiv](https://pixiv.net)の検索結果に指定した除外タグを自動的に追加するユーザースクリプトです
 
-[Greasyfork](https://greasyfork.org/ja/scripts/456536-pixiv-automatic-exclusion-search)
 
 ## 機能
 -   除外タグを指定
