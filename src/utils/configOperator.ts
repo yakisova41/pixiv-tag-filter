@@ -3,17 +3,32 @@
  * なければ作成
  */
 export const configExist = () => {
-  const config = localStorage.getItem("pixiv-tag-filter-config");
+  const defaultValue = {
+    blocklist: [],
+    block: true,
+    users: false,
+    ugoiraBlock: false,
+    r18gBlock: false,
+  };
 
-  if (config === null) {
+  const configStr = localStorage.getItem("pixiv-tag-filter-config");
+
+  if (configStr === null) {
     localStorage.setItem(
       "pixiv-tag-filter-config",
-      JSON.stringify({
-        blocklist: [],
-        block: true,
-        users: false,
-      })
+      JSON.stringify(defaultValue)
     );
+  } else {
+    // config is exist
+    const config = JSON.parse(configStr);
+    Object.keys(defaultValue).forEach((key) => {
+      if (config[key] === undefined) {
+        localStorage.setItem(
+          "pixiv-tag-filter-config",
+          JSON.stringify({ ...config, [key]: defaultValue[key] })
+        );
+      }
+    });
   }
 };
 
@@ -23,7 +38,10 @@ export const configExist = () => {
  */
 export const get = (): TagFilterConfig => {
   configExist();
-  return JSON.parse(localStorage.getItem("pixiv-tag-filter-config"));
+  const config: TagFilterConfig = JSON.parse(
+    localStorage.getItem("pixiv-tag-filter-config")
+  );
+  return config;
 };
 
 /**
@@ -31,19 +49,22 @@ export const get = (): TagFilterConfig => {
  * @param key configのkey
  * @param value configに設定する値
  */
-export const set = (key: keyof TagFilterConfig, value: any) => {
+export function set<T extends keyof TagFilterConfig>(
+  key: T,
+  value: TagFilterConfig[T]
+) {
   configExist();
 
   const config = get();
   config[key] = value;
 
   localStorage.setItem("pixiv-tag-filter-config", JSON.stringify(config));
-};
+}
 
 export type Users =
   | "00"
-  | "00"
   | "000"
+  | "0000"
   | "50"
   | "100"
   | "300"
@@ -56,8 +77,10 @@ export type Users =
   | "40000"
   | "50000";
 
-export type TagFilterConfig = {
-  blocklist?: string[];
-  block?: boolean;
-  users?: false | Users;
-};
+export interface TagFilterConfig {
+  blocklist: string[];
+  block: boolean;
+  users: false | Users;
+  ugoiraBlock: boolean;
+  r18gBlock: boolean;
+}

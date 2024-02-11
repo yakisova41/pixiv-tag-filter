@@ -3,16 +3,21 @@ import { Filter } from "./PixivFilter";
 import { get } from "../utils/configOperator";
 
 export default <Filter>{
-    filter: (illust: illust) => {
-        const blocktags = get().blocklist;
-        let block = false;
+  filter: (illust: illust) => {
+    const { blocklist, r18gBlock } = get();
 
-        illust.tags?.forEach((tag) => {
-            if (blocktags.includes(tag)) {
-                block = true;
-            }
-        });
+    if (r18gBlock) {
+      blocklist.push("R-18G");
+    }
 
-        return block;
-    },
+    let block = false;
+
+    illust.tags?.forEach((tag) => {
+      if (blocklist.includes(tag)) {
+        block = true;
+      }
+    });
+
+    return block;
+  },
 };

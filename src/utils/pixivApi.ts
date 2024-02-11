@@ -13,7 +13,7 @@ export const search = (
 ): Promise<pixivResponse> => {
   return new Promise((resolve) => {
     fetch(
-      `https://www.pixiv.net/ajax/search/${type}/${word}?word=${word}&order=${order}&mode=${mode}&p=${String(
+      `https://www.pixiv.net/ajax/search/${type}/${word}?word=${word}&order=${order}&mode=${mode}&blt=100&bgt=1000&p=${String(
         pageNumber
       )}&s_mode=s_tag&type=all&lang=ja`,
       {
@@ -159,6 +159,22 @@ export const bookmark_remove = async (illust_id: string, csrfToken: string) => {
   });
 };
 
+export async function getArtworkInfo(
+  illust_id: string
+): Promise<ArtworkResponse> {
+  const res = await fetch(
+    `https://www.pixiv.net/ajax/illust/${illust_id}?lang=ja&version=d758e658999c18327ac3cf919c1b0af7a0aac0b8`,
+    {
+      method: "GET",
+    }
+  );
+
+  const text = await res.text();
+  const data = JSON.parse(text);
+
+  return data;
+}
+
 export interface illust {
   aiType: number;
   alt: string;
@@ -237,4 +253,125 @@ export interface pixivResponse {
       infeed: { url: string };
     };
   };
+}
+
+export interface ArtworkResponse {
+  body: {
+    illustId: string;
+    illustTitle: string;
+    illustComment: string;
+    id: string;
+    title: string;
+    description: string;
+    illustType: number;
+    createDate: string;
+    uploadDate: string;
+    restrict: number;
+    xRestrict: number;
+    sl: number;
+    urls: Urls;
+    tags: Tags;
+    alt: string;
+    userId: string;
+    userName: string;
+    userAccount: string;
+    userIllusts: Record<string, illust>;
+    likeData: boolean;
+    width: number;
+    height: number;
+    pageCount: number;
+    bookmarkCount: number | undefined;
+    likeCount: number;
+    commentCount: number;
+    responseCount: number;
+    viewCount: number;
+    bookStyle: string;
+    isHowto: boolean;
+    isOriginal: boolean;
+    imageResponseOutData: any[];
+    imageResponseData: any[];
+    imageResponseCount: number;
+    pollData: any;
+    seriesNavData: any;
+    descriptionBoothId: any;
+    descriptionYoutubeId: any;
+    comicPromotion: any;
+    fanboxPromotion: any;
+    contestBanners: any[];
+    isBookmarkable: boolean;
+    bookmarkData: any;
+    contestData: any;
+    zoneConfig: never;
+    extraData: ExtraData;
+    titleCaptionTranslation: TitleCaptionTranslation3;
+    isUnlisted: boolean;
+    request: any;
+    commentOff: number;
+    aiType: number;
+    reuploadDate: any;
+    locationMask: boolean;
+  };
+  erorr: boolean;
+  message: string;
+}
+
+export interface ExtraData {
+  meta: Meta;
+}
+
+export interface Meta {
+  title: string;
+  description: string;
+  canonical: string;
+  alternateLanguages: AlternateLanguages;
+  descriptionHeader: string;
+  ogp: Ogp;
+  twitter: Twitter;
+}
+
+export interface AlternateLanguages {
+  ja: string;
+  en: string;
+}
+
+export interface Ogp {
+  description: string;
+  image: string;
+  title: string;
+  type: string;
+}
+
+export interface Twitter {
+  description: string;
+  image: string;
+  title: string;
+  card: string;
+}
+
+export interface TitleCaptionTranslation3 {
+  workTitle: any;
+  workCaption: any;
+}
+
+export interface Urls {
+  mini: string;
+  thumb: string;
+  small: string;
+  regular: string;
+  original: string;
+}
+
+export interface Tags {
+  authorId: string;
+  isLocked: boolean;
+  tags: Tag[];
+  writable: boolean;
+}
+
+export interface Tag {
+  tag: string;
+  locked: boolean;
+  deletable: boolean;
+  userId: string;
+  userName: string;
 }
