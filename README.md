@@ -14,4 +14,4 @@
 -   うごイラの除外
 -   R-18Gのみ除外
 
-![screenshot-ptf](https://github.com/yakisova41/pixiv-tag-filter/assets/75610521/6faf10d7-8505-4137-ad2d-8ab7b15d1be9)
+![名称未設定](https://github.com/yakisova41/pixiv-tag-filter/assets/75610521/ca3c6692-f818-400e-bbe9-26ef2c5253e7)
