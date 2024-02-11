@@ -1,139 +1,174 @@
 .toggle_button {
-    position: fixed;
-    bottom: calc(34px + 50px + 10px);
-    right: 28px;
-    background-color: rgb(0, 150, 250);
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
+  position: fixed;
+  bottom: calc(34px + 50px + 10px);
+  right: 28px;
+  background-color: rgb(0, 150, 250);
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
+}
+
+.tagFilter_gray_text {
+  color: var(--charcoal-text3);
+}
+
+.tagFilter_input {
+  height: 40px;
+  border-radius: 5px;
+  border: 0;
+  padding: 1px 4px;
+  color: var(--charcoal-text1);
+  background-color: var(--charcoal-transparent-hover);
 }
 
 .toggle_button:hover {
-    background-color: rgb(31, 163, 251);
+  background-color: rgb(31, 163, 251);
 }
 
 .toggle_button > svg {
-    fill: rgb(245, 245, 245);
+  fill: rgb(245, 245, 245);
 }
 
 .option_panel_container {
-    position: fixed;
-    bottom: 34px;
-    right: calc(28px + 50px + 10px);
-    background-color: var(--charcoal-surface9);
-    width: 600px;
-    height: 400px;
-    border-radius: 10px;
-    overflow: hidden;
-    border: solid 1px rgb(197, 197, 197);
-    display: flex;
+  position: fixed;
+  bottom: 34px;
+  right: calc(28px + 50px + 10px);
+  background-color: var(--charcoal-surface9);
+  width: 600px;
+  height: 400px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: solid 1px rgb(197, 197, 197);
+  display: flex;
 }
 
 .option_panel_primary {
-    width: 50%;
+  width: 50%;
 }
 
 .option_panel_secondry {
-    width: 50%;
+  width: 50%;
+  overflow-y: scroll;
+}
+
+.option_panel_secondry::-webkit-scrollbar {
+  background: transparent;
+  width: 16px;
+}
+
+.option_panel_secondry::-webkit-scrollbar-thumb {
+  height: 56px;
+  border-radius: 8px;
+  border: 4px solid transparent;
+  background-clip: content-box;
+  background-color: var(--charcoal-transparent-hover);
 }
 
 .option_panel_bottom {
-    height: 30px;
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
 }
 
 .option_panel_bottom > span {
-    color: var(--charcoal-text2);
+  color: var(--charcoal-text2);
 }
 
 .option_panel_content {
-    padding: 10px;
+  padding: 10px;
 }
 
 .blocktags_base {
-    width: 100%;
-    height: 300px;
-    border-radius: 5px;
-    background-color: var(--charcoal-transparent-hover);
-    margin-bottom: 10px;
-    overflow-y: scroll;
-    overscroll-behavior: contain;
+  width: 100%;
+  height: 300px;
+  border-radius: 5px;
+  background-color: var(--charcoal-transparent-hover);
+  margin-bottom: 10px;
+  overflow-y: scroll;
+  overscroll-behavior: contain;
 }
 
 .blocktags_base::-webkit-scrollbar {
-    background: transparent;
-    width: 16px;
+  background: transparent;
+  width: 16px;
 }
 
 .blocktags_base::-webkit-scrollbar-thumb {
-    height: 56px;
-    border-radius: 8px;
-    border: 4px solid transparent;
-    background-clip: content-box;
-    background-color: var(--charcoal-surface9);
+  height: 56px;
+  border-radius: 8px;
+  border: 4px solid transparent;
+  background-clip: content-box;
+  background-color: var(--charcoal-surface9);
 }
 
 .blocktags_input {
-    width: calc(100% - 8px);
-    height: 40px;
-    border-radius: 5px;
-    border: 0;
-    padding: 1px 4px;
-    color: var(--charcoal-text1);
-    background-color: var(--charcoal-transparent-hover);
+  width: calc(100% - 8px);
 }
 
 .block_tag {
-    padding: 15px 8px;
-    display: flex;
-    align-items: center;
-    gap: 0 8px;
+  padding: 15px 8px;
+  display: flex;
+  align-items: center;
+  gap: 0 8px;
 }
 
 .block_tag_delete {
-    background-color: transparent;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .block_tag_delete > svg {
-    fill: var(--charcoal-text1);
+  fill: var(--charcoal-text1);
 }
 
 .option_panel_settings {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .option_panel_setting {
-    padding: 5px 5px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  padding: 5px 5px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .option_panel_select {
-    appearance: none;
-    background-color: var(--charcoal-transparent-hover);
-    color: var(--charcoal-text1);
-    padding: 10px 10px;
-    border-radius: 5px;
+  appearance: none;
+  background-color: var(--charcoal-transparent-hover);
+  color: var(--charcoal-text1);
+  padding: 10px 10px;
+  border-radius: 5px;
 }
 
 .option_panel_select > option {
-    color: black;
+  color: black;
+}
+
+.bookmark_input_container {
+  display: flex;
+  gap: 0 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.bookmark_input_form {
+  width: 60%;
+}
+
+.bookmark_input_text {
 }

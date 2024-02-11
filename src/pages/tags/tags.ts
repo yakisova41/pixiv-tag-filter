@@ -10,6 +10,7 @@ import {
   PageChangeEvent,
   SearchChangeEvent,
 } from "../../utils/pageChangeObserver";
+import ugoiraFilter from "../../filter/ugoiraFilter";
 
 function tags(
   searchKeyword: string,
@@ -22,6 +23,7 @@ function tags(
     const filter = new PixivFilter();
     filter.addFilter(tagFilter);
     filter.addFilter(undefinedFilter);
+    filter.addFilter(ugoiraFilter);
 
     /**
      * 絞り込みの結果をreactのレンダリングイベントに発火します。
@@ -57,7 +59,6 @@ function tags(
           break;
       }
       const sortResult = filter.run(data);
-
       setCache(sortResult);
 
       document.dispatchEvent(
