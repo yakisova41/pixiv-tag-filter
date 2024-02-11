@@ -11,5 +11,6 @@
 ## 機能
 -   除外タグを指定
 -   ブックマーク数(00users入り)を絞り込むタグの自動追加
-
+-   うごイラの除外
+-   R-18Gのみ除外
 ![screenshot-ptf](https://github.com/yakisova41/pixiv-tag-filter/assets/75610521/6faf10d7-8505-4137-ad2d-8ab7b15d1be9)
