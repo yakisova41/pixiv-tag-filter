@@ -1,11 +1,11 @@
 {
-  "Specify number of bookmarks": {
-    "ja": "usersタグの絞り込み",
-    "zh": "指定书签的数量"
+  "Filter by \"users\" tag": {
+    "ja": "usersタグで絞り込み",
+    "zh": "按\"users\"标签筛选"
   },
-  "Enable Illustration Refinement": {
+  "Enable Illustration Filtering": {
     "ja": "絞り込みを有効にする",
-    "zh": "启用插图细化功能"
+    "zh": "启用插图过滤"
   },
   "Enter the tags name you want to exclude": {
     "ja": "絞り込むタグをEnterで追加",
@@ -15,9 +15,9 @@
     "ja": "作品がありません",
     "zh": "没有插图"
   },
-  "All illustrations on this page have been narrowed down": {
-    "ja": "このページの作品はすべて絞り込みされました。",
-    "zh": "本页的所有插图都已缩小了范围"
+  "All illustrations on this page have been filtered": {
+    "ja": "このページのイラストがすべてフィルタリングされました。",
+    "zh": "本页所有插图均经过过滤"
   },
   "Please try moving pages or changing your search criteria": {
     "ja": "ページの移動か、絞り込み条件の変更をお試しください。",
@@ -30,5 +30,9 @@
   "Filter R-18G": {
     "ja": "R-18Gをフィルタリングする",
     "zh": "过滤R-18G"
+  },
+  "by Pixiv tag filter": {
+    "ja": "by Pixiv 自動で除外検索",
+    "zh": "by Pixiv 自动排除搜索"
   }
 }

@@ -52,7 +52,7 @@ const Users = () => {
 
   return (
     <li className={style.option_panel_setting}>
-      <span>{translate("Specify number of bookmarks")}</span>
+      <span>{translate('Filter by "users" tag')}</span>
       <select
         className={style.option_panel_select}
         onChange={handleChange}
