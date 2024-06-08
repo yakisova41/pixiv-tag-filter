@@ -41,6 +41,7 @@ function findIllustElement(): Promise<HTMLUListElement> {
     const selectors = [
       "#root > div.charcoal-token > div > div:nth-child(3) > div > div > div:nth-child(6)  > section:nth-child(2) > div:nth-child(2) > div:nth-child(1) > ul",
       "#root > div.charcoal-token > div > div:nth-child(3) > div > div > div:nth-child(5)  > section:nth-child(2) > div:nth-child(2) > div:nth-child(1) > ul",
+      "#root > div:nth-child(2) > div > div:nth-child(4) > div > div > div:nth-child(6) > section > div:nth-child(2) > div:nth-child(1) > ul",
     ];
 
     const finders = [];
