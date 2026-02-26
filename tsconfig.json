@@ -1,18 +1,17 @@
 {
   "compilerOptions": {
     "lib": ["ESNext", "dom", "dom.iterable"],
-    "module": "commonjs",
+    "module": "esnext",
     "target": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowJs": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "types": ["node", "chrome"],
     "plugins": [],
     "skipLibCheck": true,
-    "jsx": "react"
+    "jsx": "react-jsx"
   },
   "exclude": ["node_modules"],
-  "typeRoots": ["@types/chrome"],
-  "includes": ["src/**/*"]
+  "typeRoots": ["@types/chrome"]
 }
