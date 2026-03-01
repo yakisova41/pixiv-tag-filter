@@ -1,9 +1,10 @@
 import { defineManifest } from "crx-monkey-next";
+import pkg from "./package.json";
 
 export default defineManifest({
   name: "__MSG_Name__",
   short_name: "name",
-  version: "0.3.2",
+  version: pkg.version,
   manifest_version: 3,
   description: "__MSG_Description__",
   content_scripts: [
