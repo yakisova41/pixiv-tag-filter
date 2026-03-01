@@ -1,0 +1,8 @@
+{
+  "Name": {
+    "message": "Pixiv 自动排除搜索"
+  },
+  "Description": {
+    "message": "Pixiv 自动排除特定标签，自动过滤与 \"users\""
+  }
+}

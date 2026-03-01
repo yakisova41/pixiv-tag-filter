@@ -3,13 +3,18 @@
   "license": "MIT",
   "version": "0.3.2",
   "type": "module",
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3"
+  },
   "dependencies": {
-    "crx-monkey-next": "^0.3.1",
+    "crx-monkey-next": "^0.4.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-toggle-slider": "^0.4.1"
   },
   "scripts": {
-    "dev": "bunx crx-monkey-next dev"
+    "dev": "bunx crx-monkey-next dev",
+    "build": "bunx crx-monkey-next build"
   }
 }

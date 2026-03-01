@@ -10,13 +10,18 @@ export default defineManifest({
     {
       matches: ["https://www.pixiv.net/*"],
       js: ["src/contentScripts.ts"],
+      css: ["src/contentStyle.css"],
+      world: "MAIN",
+      userscript_direct_inject: true,
+      use_isolated_connection: true,
     },
   ],
-  web_accessible_resources: [
-    {
-      resources: ["embed.js"],
-      matches: ["https://www.pixiv.net/*"],
-    },
-  ],
+  background: {
+    service_worker: "src/sw.ts",
+  },
   default_locale: "en",
+  action: {
+    default_popup: "./popup/index.html",
+  },
+  permissions: ["activeTab"],
 });
