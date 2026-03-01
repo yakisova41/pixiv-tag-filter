@@ -1,6 +1,6 @@
-import { illust } from "../utils/pixivApi";
+import { illust } from "../pixiv/pixivApi";
 import { Filter } from "./PixivFilter";
-import { get } from "../utils/configOperator";
+import { get } from "../configOperator";
 
 export default <Filter>{
   filter: (illust: illust) => {

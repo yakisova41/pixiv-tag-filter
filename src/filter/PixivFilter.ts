@@ -1,33 +1,33 @@
-import { illust } from "../utils/pixivApi";
+import { illust } from "../pixiv/pixivApi";
 
 export class PixivFilter {
-    private filters: Filter[] = [];
+  private filters: Filter[] = [];
 
-    public addFilter(filter: Filter) {
-        this.filters.push(filter);
-    }
+  public addFilter(filter: Filter) {
+    this.filters.push(filter);
+  }
 
-    public run(illusts: illust[]): illust[] {
-        const result: illust[] = [];
+  public run(illusts: illust[]): illust[] {
+    const result: illust[] = [];
 
-        illusts.forEach((ilust) => {
-            let remove = false;
+    illusts.forEach((ilust) => {
+      let remove = false;
 
-            this.filters.forEach((filter) => {
-                if (filter.filter(ilust)) {
-                    remove = true;
-                }
-            });
+      this.filters.forEach((filter) => {
+        if (filter.filter(ilust)) {
+          remove = true;
+        }
+      });
 
-            if (!remove) {
-                result.push(ilust);
-            }
-        });
+      if (!remove) {
+        result.push(ilust);
+      }
+    });
 
-        return result;
-    }
+    return result;
+  }
 }
 
 export type Filter = {
-    filter: (illust: illust) => boolean;
+  filter: (illust: illust) => boolean;
 };

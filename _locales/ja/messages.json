@@ -1,0 +1,8 @@
+{
+  "Name": {
+    "message": "Pixiv 自動で除外検索"
+  },
+  "Description": {
+    "message": "Pixiv 特定タグを自動除外 users入りのみに自動絞り込みする機能を追加します。"
+  }
+}
